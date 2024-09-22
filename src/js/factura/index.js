@@ -5,14 +5,15 @@ import DataTable from "datatables.net-bs5";
 import { lenguaje } from "../lenguaje";
 
 
-const formulario = document.getElementById('formCliente')
-const tabla = document.getElementById('tablaCliente')
+const formulario = document.getElementById('formFactura')
+const tabla = document.getElementById('tablaFactura')
 const btnGuardar = document.getElementById('btnGuardar')
 const btnModificar = document.getElementById('btnModificar')
 const btnCancelar = document.getElementById('btnCancelar')
 
+
 let contador = 1;
-const datatable = new DataTable('#tablaCliente', {
+const datatable = new DataTable('#tablaFactura', {
     data: null,
     language: lenguaje,
     pageLength: '15',
@@ -20,7 +21,7 @@ const datatable = new DataTable('#tablaCliente', {
     columns: [
         {
             title: 'No.',
-            data: 'clie_id',
+            data: 'deta_id',
             width: '2%',
             render: (data, type, row, meta) => {
                 // console.log(meta.ro);
@@ -28,56 +29,55 @@ const datatable = new DataTable('#tablaCliente', {
             }
         },
         {
-            title: 'Nombre ',
-            data: 'clie_nombres'
+            title: 'nombre del empleado',
+            data: 'deta_empleado'
         },
         {
-            title: 'Apellido',
-            data: 'clie_apellidos'
+            title: 'nombre del factura que reservo',
+            data: 'deta_reservacion'
         },
         {
-            title: 'Genero',
-            data: 'clie_genero'
+            title: 'total a pagar',
+            data: 'deta_total'
         },
         {
-            title: 'Correo',
-            data: 'clie_correo'
-        },
-        {
-            title: 'Direccion',
-            data: 'clie_direccion'
-        },
-        {
-            title: 'Telefono',
-            data: 'clie_telefono'
-        },
-        {
-            title: 'Pais',
-            data: 'clie_pais'
-        },
-        {
-            title: 'Nit',
-            data: 'clie_nit'
-        },
-        {
-            title: 'Password',
-            data: 'clie_password'
-        },
-        {
-            title: 'Acciones',
-            data: 'clie_id',
+            title: 'Modificar',
+            data: 'deta_id',
             searchable: false,
             orderable: false,
             render: (data, type, row, meta) => {
                 let html = `
-                <button class='btn btn-warning modificar' data-clie_id="${data}" data-clie_nombres="${row.clie_nombres}" data-clie_apellidos="${row.clie_apellidos}" data-clie_genero="${row.clie_genero}" data-clie_correo="${row.clie_correo}" data-clie_direccion="${row.clie_direccion}" data-clie_telefono="${clie_telefono}" data-clie_pais="${row.clie_pais}" data-clie_nit="${row.clie_nit} data-clie_password="${row.clie_password}"><i class='bi bi-pencil-square'></i></button>
+                <button class='btn btn-warning modificar' data-deta_id="${data}" data-deta_empleado="${row.deta_empleado}" data-deta_reservacion="${row.deta_reservacion}" data-deta_total="${row.deta_total}" data-saludo="hola mundo"><i class='bi bi-pencil-square'></i>Modificar</button>
                 
-                <button class='btn btn-error bg-danger eliminar' data-emp_id="${data}"><i class="bi bi-trash-fill"></i></button>
-
+                `
+                return html;
+            }
+        }, 
+        {
+            title: 'Eliminar',
+            data: 'deta_id',
+            searchable: false,
+            orderable: false,
+            render: (data, type, row, meta) => {
+                let html = `
+                <button class='btn btn-danger eliminar' data-deta_id="${data}">Eliminar</button>
                 `
                 return html;
             }
         },
+        {
+            title: 'Generar Factura',
+            data: 'deta_id',
+            searchable: false,
+            orderable: false,
+            render: (data, type, row, meta) => {
+                let html = `
+                    <button class='btn btn-danger' onclick="window.location.href='/reporte/pdf?deta_id=${data}'">PDF</button>
+                `;
+                return html;
+            }
+        },
+        
 
     ]
 })
@@ -90,7 +90,7 @@ btnCancelar.disabled = true
 const guardar = async (e) => {
     e.preventDefault()
 
-    if (!validarFormulario(formulario, ['clie_id'])) {
+    if (!validarFormulario(formulario, ['deta_id'])) {
         Swal.fire({
             title: "Campos vacios",
             text: "Debe llenar todos los campos",
@@ -101,7 +101,7 @@ const guardar = async (e) => {
 
     try {
         const body = new FormData(formulario)
-        const url = "/hotel/API/cliente/guardar"
+        const url = "/hotel/API/factura/guardar"
         const config = {
             method: 'POST',
             body
@@ -133,7 +133,7 @@ const guardar = async (e) => {
 
 const buscar = async () => {
     try {
-        const url = "/hotel/API/cliente/buscar"
+        const url = "/hotel/API/factura/buscar"
         const config = {
             method: 'GET',
         }
@@ -142,6 +142,9 @@ const buscar = async () => {
         const data = await respuesta.json();
         const { codigo, mensaje, detalle, datos } = data;
 
+        // tabla.tBodies[0].innerHTML = ''
+        // const fragment = document.createDocumentFragment();
+        console.log(datos);
         datatable.clear().draw();
 
         if (datos) {
@@ -152,21 +155,16 @@ const buscar = async () => {
         console.log(error);
     }
 }
+
 buscar();
 
 const traerDatos = (e) => {
     const elemento = e.currentTarget.dataset
 
-    formulario.clie_id.value = elemento.clie_id
-    formulario.clie_nombres.value = elemento.clie_nombres
-    formulario.clie_apellidos.value = elemento.clie_apellidos
-    formulario.clie_genero.value = elemento.clie_genero
-    formulario.clie_correo.value = elemento.clie_correo
-    formulario.clie_direccion.value = elemento.clie_direccion
-    formulario.clie_telefono.value = elemento.clie_telefono
-    formulario.clie_pais.value = elemento.clie_pais
-    formulario.clie_nit.value = elemento.clie_nit
-    formulario.clie_password.value = elemento.clie_password
+    formulario.deta_id.value = elemento.deta_id
+    formulario.deta_empleado.value = elemento.deta_empleado
+    formulario.deta_reservacion.value = elemento.deta_reservacion
+    formulario.deta_total.value = elemento.deta_total
     tabla.parentElement.parentElement.style.display = 'none'
 
     btnGuardar.parentElement.style.display = 'none'
@@ -202,7 +200,7 @@ const modificar = async (e) => {
 
     try {
         const body = new FormData(formulario)
-        const url = "/hotel/API/cliente/modificar"
+        const url = "/hotel/API/factura/modificar"
         const config = {
             method: 'POST',
             body
@@ -233,9 +231,9 @@ const modificar = async (e) => {
     }
 }
 
-const eliminar = async (cliente) => {
+const eliminar = async (factura) => {
     
-    const id = cliente.currentTarget.dataset.clie_id
+    const id = factura.currentTarget.dataset.deta_id
 
     let confirmacion = await Swal.fire({
         title: '¿Está seguro de que desea eliminar este empleado?',
@@ -259,9 +257,9 @@ const eliminar = async (cliente) => {
 
         try {
             const body = new FormData()
-            body.append('clie_id', id)
+            body.append('deta_id', id)
 
-            const url = '/hotel/API/cliente/eliminar';
+            const url = '/hotel/API/factura/eliminar';
             const config = {
                 method: 'POST',
                 body
@@ -317,3 +315,4 @@ btnCancelar.addEventListener('click', cancelar)
 btnModificar.addEventListener('click', modificar)
 datatable.on('click', '.modificar', traerDatos)
 datatable.on('click', '.eliminar', eliminar)
+

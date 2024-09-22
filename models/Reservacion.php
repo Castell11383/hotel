@@ -44,4 +44,13 @@ class Reservacion extends ActiveRecord {
         return self::fetchArray($sql);
     }
 
+    public static function buscar()
+    {
+        $sql = "SELECT reser_id, clie_nombres, clie_apellidos
+        FROM reservacion 
+        JOIN clientes  ON reser_cliente = clie_id
+        WHERE reser_situacion = 1;";
+        return self::fetchArray($sql);
+    }
+
 }

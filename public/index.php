@@ -1,20 +1,23 @@
 <?php 
 require_once __DIR__ . '/../includes/app.php';
 
-
 use Controllers\ReservacionController;
 use MVC\Router;
 use Controllers\AppController;
 use Controllers\EmpleadoController;
 use Controllers\ClienteController;
 use Controllers\HabitacionController;
-use Model\Cliente;
-use Model\Empleado;
+use Controllers\InicioController;
+use Controllers\ReservacionController;
+use Controllers\FacturaController;
+use Controllers\ReporteController;
+use Controllers\MapaController;
 
 $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
 
-$router->get('/', [AppController::class,'index']);
+//INICIO
+$router->get('/', [InicioController::class,'index']);
 
 // EMPLEADOS
 $router->get('/empleados', [EmpleadoController::class, 'index']);
@@ -30,7 +33,7 @@ $router->post('/API/cliente/modificar', [ClienteController::class,'modificarAPI'
 $router->get('/API/cliente/buscar', [ClienteController::class,'buscarAPI']);
 $router->post('/API/cliente/eliminar', [ClienteController::class,'eliminarAPI']);
 
-//ruta habitacion
+//habitacion
 $router->get('/habitaciones', [HabitacionController::class, 'index']);
 
 $router->get('/habitaciones/detalle', [HabitacionController::class, 'detalle']);
@@ -44,6 +47,19 @@ $router->get('/API/reservaciones/buscar', [ReservacionController::class,'buscarA
 $router->post('/API/reservaciones/guardar', [ReservacionController::class,'guardarApi']);
 $router->post('/API/reservaciones/modificar', [ReservacionController::class,'modificarApi']);
 $router->post('/API/reservaciones/eliminar', [ReservacionController::class,'eliminarApi']);
+
+//Factura
+$router->get('/factura', [FacturaController::class,'index']);
+$router->post('/API/factura/guardar', [FacturaController::class,'guardarAPI']);
+$router->post('/API/factura/modificar', [FacturaController::class,'modificarAPI']);
+$router->get('/API/factura/buscar', [FacturaController::class,'buscarAPI']);
+$router->post('/API/factura/eliminar', [FacturaController::class,'eliminarAPI']);
+
+//PDF
+$router->get('/pdf', [ReporteController::class, 'pdf']);
+
+//MAPA
+$router->get('/inicio', [MapaController::class, 'index']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
