@@ -4,7 +4,7 @@ module.exports = {
   mode: 'development',
   entry: {
     'js/app' : './src/js/app.js',
-    'js/inicio' : './src/js/inicio.js',
+    'js/inicio/index' : './src/js/inicio/index.js',
   },
   output: {
     filename: '[name].js',
