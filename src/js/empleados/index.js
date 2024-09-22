@@ -57,14 +57,12 @@ const datatable = new DataTable('#tablaEmpleados', {
                 <button class='btn btn-warning modificar' data-emp_id="${data}" data-emp_nombres="${row.emp_nombres}" data-emp_apellidos="${row.emp_apellidos}" data-emp_cargo="${row.emp_cargo}" data-emp_telefono="${row.emp_telefono}" data-emp_genero="${row.emp_genero}"><i class='bi bi-pencil-square'></i></button>
                 
                 <button class='btn btn-error bg-danger eliminar' data-emp_id="${data}"><i class="bi bi-trash-fill"></i></button>
-
                 `
                 return html;
             }
-        },
-
+        }
     ]
-})
+});
 
 const guardar = async (e) => {
     e.preventDefault();

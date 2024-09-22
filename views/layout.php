@@ -32,9 +32,8 @@
                         <i class="bi bi-people-fill"></i> Empleados
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark "id="dropwdownRevision" style="margin: 0;">
-                            <!-- <h6 class="dropdown-header">Información</h6> -->
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/aplicaciones/nueva"><i class="bi bi-person-fill-add"></i>Registrar</a>
+                                <a class="dropdown-item nav-link text-white " href="/hotel/empleados"><i class="bi bi-person-fill-add"></i> Registrar</a>
                             </li>
                         
                     
