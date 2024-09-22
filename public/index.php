@@ -4,6 +4,7 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\AppController;
+use Controllers\InicioController;
 use Controllers\HabitacionController;
 use Controllers\ReservacionController;
 use Controllers\EmpleadoController;
@@ -14,7 +15,8 @@ use Model\Empleado;
 $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
 
-$router->get('/', [AppController::class,'index']);
+//INICIO
+$router->get('/', [InicioController::class,'index']);
 
 // EMPLEADOS
 $router->get('/empleados', [EmpleadoController::class, 'index']);

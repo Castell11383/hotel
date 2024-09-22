@@ -6,6 +6,7 @@ module.exports = {
   mode: 'development',
   entry: {
     'js/app' : './src/js/app.js',
+    'js/inicio/index' : './src/js/inicio/index.js',
     'js/inicio' : './src/js/inicio.js',
     'js/habitaciones/index' : './src/js/habitaciones/index.js',
     'js/reservaciones/index' : './src/js/reservaciones/index.js',
