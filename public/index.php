@@ -10,6 +10,7 @@ use Controllers\ReservacionController;
 use Controllers\EmpleadoController;
 use Controllers\ClienteController;
 use Controllers\FacturaController;
+use Controllers\ReporteController;
 use Model\Cliente;
 use Model\Empleado;
 
@@ -53,6 +54,9 @@ $router->post('/API/factura/guardar', [FacturaController::class,'guardarAPI']);
 $router->post('/API/factura/modificar', [FacturaController::class,'modificarAPI']);
 $router->get('/API/factura/buscar', [FacturaController::class,'buscarAPI']);
 $router->post('/API/factura/eliminar', [FacturaController::class,'eliminarAPI']);
+
+//PDF
+$router->get('/pdf', [ReporteController::class, 'pdf']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
