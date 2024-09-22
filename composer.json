@@ -5,6 +5,9 @@
     "config": {
         "platform-check": false,
         "php":"7.4.21"
+        "platform": {
+            "php":"7.4.21"
+        }
     },
     "autoload": {
         "psr-4": {
