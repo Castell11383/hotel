@@ -26,8 +26,10 @@ $router->post('/api/habitaciones/guardar', [HabitacionController::class, 'guarda
 //reservaciones 
 $router->post('/reservacion', [HabitacionController::class, 'reservacion']);
 $router->get('/reservacion/detalle', [ReservacionController::class, 'index']);
-$router->post('/reservacion/eliminar', [HabitacionController::class, 'eliminarReservacion']);
-$router->post('/reservacion/modificar', [HabitacionController::class, 'modificarReservacion']);
+$router->get('/API/reservaciones/buscar', [ReservacionController::class,'buscarApi']);
+$router->post('/API/reservaciones/guardar', [ReservacionController::class,'guardarApi']);
+$router->post('/API/reservaciones/modificar', [ReservacionController::class,'modificarApi']);
+$router->post('/API/reservaciones/eliminar', [ReservacionController::class,'eliminarApi']);
 
 // $router->post('/confirmar-reservacion', 'HabitacionController::confirmarReservacion');
 // $router->post('/guardar-reservacion', 'HabitacionController::guardarReservacion');

@@ -38,7 +38,7 @@ const datatable = new Datatable('#tabla-reservaciones', {
 
 // Función para buscar reservaciones y llenar la tabla
 const buscar = async () => {
-    const url = `/reservaciones/buscar`; // Cambia esta URL según tu ruta
+    const url = `/hotel/API/reservaciones/buscar`; // Cambia esta URL según tu ruta
     const config = {
         method: 'GET'
     };
@@ -79,7 +79,7 @@ const guardar = async (evento) => {
     }
 
     const body = new FormData(formulario);
-    const url = '/reservaciones/guardar'; // Cambia esta URL según tu ruta
+    const url = '/hotel/API/reservaciones/guardar'; // Cambia esta URL según tu ruta
     const config = {
         method: 'POST',
         body
@@ -117,7 +117,7 @@ const eliminar = async (e) => {
     if (await confirmacion('warning', '¿Desea eliminar este registro?')) {
         const body = new FormData();
         body.append('reserva_id', id);
-        const url = '/reservaciones/eliminar'; // Cambia esta URL según tu ruta
+        const url = '/hotel/API/reservaciones/eliminar'; // Cambia esta URL según tu ruta
         const config = {
             method: 'POST',
             body

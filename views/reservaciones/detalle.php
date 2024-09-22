@@ -1,3 +1,9 @@
+<?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -74,7 +80,7 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <button type="submit" id="btnGuardar" class="btn btn-primary w-100">Reservar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-primary w-100">Guardar Reservacion</button>
             </div>
         </div>
     </form>
@@ -115,4 +121,4 @@
     </div>
 </div>
 
-<script src="<?= asset('./build/js/habitaciones/index.js')  ?>"></script>
+<script src="<?= asset('./build/js/reservaciones/index.js')  ?>"></script>
