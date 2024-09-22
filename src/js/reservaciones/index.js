@@ -55,7 +55,7 @@ const datatable = new DataTable('#tabla-reservaciones', {
             render: (data, type, row, meta) => {
                 let html = `
                 <button class='btn btn-warning modificar' data-reser_id="${data}" data-reser_cliente="${row.reser_cliente}" data-reser_habitacion="${row.reser_habitacion}" data-reser_fecha_entrada="${row.reser_fecha_entrada}" data-reser_fecha_salida="${row.reser_fecha_salida}" data-saludo="hola mundo"><i class='bi bi-pencil-square'></i></button>
-                <button class='btn btn-danger eliminar' data-reser_id="${data}">Eliminar</button>
+                <button class='btn btn-danger eliminar' data-reser_id="${data}"><i class="bi bi-trash-fill"></i></button>
 
                 `
                 return html;
@@ -189,52 +189,55 @@ const cancelar = () => {
 
 
 const modificar = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (!validarFormulario(formulario)) {
         Swal.fire({
-            title: "Campos vacíos",
+            title: "Campos vacios",
             text: "Debe llenar todos los campos",
             icon: "info"
-        });
-        return;
+        })
+        return
     }
 
     try {
-        const body = new FormData(formulario);
-        console.log([...body.entries()]);  // Agrega este log para verificar qué datos se están enviando
+        const body = new FormData(formulario)
 
-        const url = "/hotel/API/reservaciones/modificar";
+//   // Imprimir los datos enviados
+//   for (let [key, value] of body.entries()) { 
+//     console.log(key, value); 
+
+
+        const url = "/hotel/API/reservaciones/modificar"
         const config = {
             method: 'POST',
             body
-        };
+        }
 
         const respuesta = await fetch(url, config);
         const data = await respuesta.json();
         const { codigo, mensaje, detalle } = data;
         console.log(data);
-
-        let icon = 'info';
+        let icon = 'info'
         if (codigo == 1) {
-            icon = 'success';
+            icon = 'success'
             formulario.reset();
-            buscar();  // Refresca la tabla
-            cancelar();  // Resetea el formulario
+            buscar();
+            cancelar();
         } else {
-            icon = 'error';
+            icon = 'error'
             console.log(detalle);
         }
 
         Toast.fire({
             icon: icon,
             title: mensaje
-        });
+        })
 
     } catch (error) {
         console.log(error);
     }
-};
+}
 
 
 
@@ -244,39 +247,80 @@ const modificar = async (e) => {
 
 
 // Función para eliminar una reservación
-const eliminar = async (e) => {
-    const button = e.target;
-    const id = button.dataset.id;
+const eliminar = async (reservacion) => {
+    
+    const id = reservacion.currentTarget.dataset.reser_id
 
-    if (await confirmacion('warning', '¿Desea eliminar este registro?')) {
-        const body = new FormData();
-        body.append('reserva_id', id);
-        const url = '/hotel/API/reservaciones/eliminar'; // Cambia esta URL según tu ruta
-        const config = {
-            method: 'POST',
-            body
-        };
+    let confirmacion = await Swal.fire({
+        title: '¿Está seguro de que desea eliminar esta reservacion?',
+        text: "Esta acción es irreversible.",
+        icon: 'warning',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Sí, eliminar',
+        denyButtonText: 'No, cancelar',
+        confirmButtonColor: '#3085d6',
+        denyButtonColor: '#d33',
+        background: '#fff3e0',
+        customClass: {
+            title: 'custom-title-class',
+            text: 'custom-text-class',
+            confirmButton: 'custom-confirm-button',
+            denyButton: 'custom-deny-button'
+        }
+    });
+    if (confirmacion.isConfirmed) {
 
         try {
+            const body = new FormData()
+            body.append('reser_id', id)
+
+            const url = '/hotel/API/reservaciones/eliminar';
+            const config = {
+                method: 'POST',
+                body
+            }
+
             const respuesta = await fetch(url, config);
             const data = await respuesta.json();
-            const { codigo, mensaje } = data;
-            let icon = 'info';
-            switch (codigo) {
-                case 1:
-                    icon = 'success';
-                    buscar();
-                    break;
-                case 0:
-                    icon = 'error';
-                    break;
+            const { codigo, mensaje, detalle } = data
+
+            if (codigo == 4) {
+
+                Swal.fire({
+                    title: '¡Éxito!',
+                    text: mensaje,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    background: '#e0f7fa',
+                    customClass: {
+                        title: 'custom-title-class',
+                        text: 'custom-text-class'
+                    }
+
+                });
+                formulario.reset();
+                buscar();
+            } else {
+                Swal.fire({
+                    title: '¡Error!',
+                    text: mensaje,
+                    icon: 'danger',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    background: '#e0f7fa',
+                    customClass: {
+                        title: 'custom-title-class',
+                        text: 'custom-text-class'
+                    }
+
+                });
             }
-            Toast.fire({
-                icon,
-                text: mensaje
-            });
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
     }
 };

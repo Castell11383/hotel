@@ -97,6 +97,7 @@ class ReservacionController
     //funcion modificar
     public static function modificarAPi()
     {
+
         // Sanitizar y validar las entradas
         $_POST['clie_id'] = htmlspecialchars($_POST['clie_id']);
         $_POST['habi_id'] = htmlspecialchars($_POST['habi_id']);
@@ -151,5 +152,33 @@ class ReservacionController
             ]);
         }
     }
-    
+
+
+    public static function eliminarAPi()
+    {
+        
+        $id = filter_var($_POST['reser_id'], FILTER_SANITIZE_NUMBER_INT);
+        try {
+            
+            $reservacion = Reservacion::find($id);
+            $reservacion->sincronizar([
+                'reser_situacion' => 0
+            ]);
+            $reservacion->actualizar();
+            http_response_code(200);
+            echo json_encode([
+                'codigo' => 4,
+                'mensaje' => 'Reservacion eliminada exitosamente',
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'codigo' => 0,
+                'mensaje' => 'Error al Eliminar la reservacion',
+                'detalle' => $e->getMessage(),
+            ]);
+        }
+    }
+
 }
+

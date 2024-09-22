@@ -47,7 +47,7 @@
     <input type="hidden" name="reser_id" id="reser_id"> <!-- Este campo debe tener el mismo nombre que en el controlador -->
         <div class="row mb-3">
             <div class="col">
-                <label for="habi_id">Seleccionar Habitación:</label>
+                <label for="habi_id">Detalles de la Habitación:</label>
                 <select name="habi_id" id="habi_id" class="form-control">
                     <?php foreach ($habitaciones as $habitacion): ?>
                         <option value="<?php echo htmlspecialchars($habitacion['habi_id']); ?>">

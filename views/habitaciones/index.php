@@ -66,10 +66,20 @@
             <p><?php echo htmlspecialchars($habitacion['habi_descripcion']); ?></p>
             <p><strong>Precio: $<?php echo htmlspecialchars($habitacion['habi_precio']); ?></strong></p>
 
-            <!-- Botón de Reservar con ícono -->
-            <a href="/hotel/reservacion/detalle?id=<?php echo htmlspecialchars($habitacion['habi_id']); ?>" class="btn btn-reservar">
-                <i class="fas fa-calendar-check"></i> Reservar
-            </a>
+            <?php if ($habitacion['situacion'] == 1) { ?>
+                <!-- Si la habitación ya está reservada, deshabilitar el botón -->
+                <button class="btn btn-secondary" disabled>Reservada</button>
+            <?php } else { ?>
+                <!-- Botón de Reservar con ícono, habilitado si la situación es distinta de 1 -->
+                <button 
+                    class="btn btn-reservar" 
+                    data-habitacion-id="<?php echo htmlspecialchars($habitacion['habi_id']); ?>"
+                    data-habitacion-tipo="<?php echo htmlspecialchars($habitacion['habi_tipo']); ?>"
+                    data-habitacion-precio="<?php echo htmlspecialchars($habitacion['habi_precio']); ?>">
+                    <i class="fas fa-calendar-check"></i> Reservar
+                </button>
+            <?php } ?>
         </div>
     <?php } ?>
 </div>
+<script src="<?= asset('/build/js/habitaciones/index.js') ?>"></script>
