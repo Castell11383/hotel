@@ -27,5 +27,12 @@ class Empleado extends ActiveRecord
         $this->emp_situacion = $args['emp_situacion'] ?? 1;
     }
 
+    
+    public static function buscar()
+    {
+        $sql = "SELECT * FROM empleados where emp_situacion = 1";
+        return self::fetchArray($sql);
+    }
+
 
 }

@@ -11,6 +11,7 @@ module.exports = {
     'js/reservaciones/index' : './src/js/reservaciones/index.js',
     'js/cliente/index' : './src/js/cliente/index.js',
     'js/empleados/index' : './src/js/empleados/index.js',
+    'js/factura/index' : './src/js/factura/index.js',
 
   },
   output: {
