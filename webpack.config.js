@@ -1,3 +1,5 @@
+
+
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
@@ -5,8 +7,11 @@ module.exports = {
   entry: {
     'js/app' : './src/js/app.js',
     'js/inicio' : './src/js/inicio.js',
+    'js/habitaciones/index' : './src/js/habitaciones/index.js',
+    'js/reservaciones/index' : './src/js/reservaciones/index.js',
     'js/cliente/index' : './src/js/cliente/index.js',
     'js/empleados/index' : './src/js/empleados/index.js',
+
   },
   output: {
     filename: '[name].js',

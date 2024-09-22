@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', (e)=> {
     dropdown.style.margin = 0;
 
 
+
+
+    
     let items = document.querySelectorAll('.nav-link')
     items.forEach(item => {
         if(item.href == location.href){
