@@ -60,7 +60,6 @@ class EmpleadoController
 
     public static function modificarAPI()
     {
-        // Sanitiza y valida los datos recibidos
         $_POST['emp_nombres'] = htmlspecialchars($_POST['emp_nombres']);
         $_POST['emp_apellidos'] = htmlspecialchars($_POST['emp_apellidos']);
         $_POST['emp_telefono'] = filter_var($_POST['emp_telefono'], FILTER_SANITIZE_NUMBER_INT);

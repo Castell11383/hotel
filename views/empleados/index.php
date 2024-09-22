@@ -61,8 +61,7 @@
 
 <div class="row justify-content-center mt-5">
     <div class="col table-responsive col-lg-11 table-wrapper border shadow bg-light rounded">
-        <table class="table table-bordered table-hover w-100 text-center shadow" id="tablaEmpleados">
-        </table>
+        <table class="table table-bordered table-hover w-100 text-center shadow" id="tablaEmpleados"></table>
     </div>
 </div>
 
