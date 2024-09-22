@@ -28,7 +28,7 @@ const datatable = new DataTable('#tablaCliente', {
             }
         },
         {
-            title: 'Nombre',
+            title: 'Nombre ',
             data: 'clie_nombres'
         },
         {

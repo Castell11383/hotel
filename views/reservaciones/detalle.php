@@ -44,6 +44,7 @@
 <div class="row justify-content-center mb-5">
     <!-- Formulario de reservación -->
     <form class="col-lg-8 border bg-light p-3" id="form-reservacion">
+    <input type="hidden" name="reser_id" id="reser_id"> <!-- Este campo debe tener el mismo nombre que en el controlador -->
         <div class="row mb-3">
             <div class="col">
                 <label for="habi_id">Seleccionar Habitación:</label>
@@ -72,11 +73,17 @@
             <div class="col">
                 <label for="reser_fecha_salida">Fecha de Salida:</label>
                 <input type="datetime-local" id="reser_fecha_salida"  name="reser_fecha_salida" class="form-control" required>
-            </div
+            </div>
         </div>
         <div class="row mb-3">
             <div class="col">
                 <button type="submit" id="btnGuardar" class="btn btn-primary w-100">Guardar Reservacion</button>
+            </div>
+            <div class="col">
+                <button type="button" id="btnModificar" class="btn btn-warning w-100">Modificar</button>
+            </div>
+            <div class="col">
+                <button type="button" id="btnCancelar" class="btn btn-danger w-100">Cancelar</button>
             </div>
         </div>
     </form>
@@ -85,35 +92,16 @@
 <!-- Mensaje de éxito/error -->
 <div id="mensaje"></div>
 
-<!-- Tabla de reservaciones -->
-<h1 class="text-center">Reservaciones Guardadas</h1>
-<div class="row justify-content-center">
-    <div class="col table-responsive" style="max-width: 80%; padding: 10px;">
-        <table id="tabla-reservaciones" class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>ID Reservación</th>
-                    <th>ID Cliente</th>
-                    <th>ID Habitación</th>
-                    <th>Fecha Entrada</th>
-                    <th>Fecha Salida</th>
-                    <th>Situación</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($reservaciones as $reservacion): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($reservacion->reser_id); ?></td>
-                        <td><?php echo htmlspecialchars($reservacion->reser_cliente); ?></td>
-                        <td><?php echo htmlspecialchars($reservacion->reser_habitacion); ?></td>
-                        <td><?php echo htmlspecialchars($reservacion->reser_fecha_entrada); ?></td>
-                        <td><?php echo htmlspecialchars($reservacion->reser_fecha_salida); ?></td>
-                        <td><?php echo $reservacion->reser_situacion == 1 ? 'Activa' : 'Cancelada'; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+
+
+
+
+<div class="row justify-content-center mt-5">
+    <div class="col table-responsive col-lg-11 table-wrapper border shadow bg-light rounded">
+        <table class="table table-bordered table-hover w-100 text-center shadow" id="tabla-reservaciones"></table>
     </div>
 </div>
+
+<!-- Tabla de reservaciones -->
 
 <script src="<?= asset('/build/js/reservaciones/index.js') ?>"></script>

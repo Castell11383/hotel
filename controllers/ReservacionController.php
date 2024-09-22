@@ -69,4 +69,87 @@ class ReservacionController
             }
         }
     }
+    public static function buscarAPi()
+    {
+        try {
+            // ORM - ELOQUENT
+            // $Reservaciones = Cliente::all();
+            $Reservaciones = Reservacion::obtenerReservacionconQuery();
+            http_response_code(200);
+            echo json_encode([
+                'codigo' => 1,
+                'mensaje' => 'Datos encontrados',
+                'detalle' => '',
+                'datos' => $Reservaciones
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'codigo' => 0,
+                'mensaje' => 'Error al buscar Reservaciones',
+                'detalle' => $e->getMessage(),
+            ]);
+        }
+    }
+
+
+
+    //funcion modificar
+    public static function modificarAPi()
+    {
+        // Sanitizar y validar las entradas
+        $_POST['clie_id'] = htmlspecialchars($_POST['clie_id']);
+        $_POST['habi_id'] = htmlspecialchars($_POST['habi_id']);
+        $_POST['reser_fecha_entrada'] = date('Y-m-d H:i', strtotime($_POST['reser_fecha_entrada']));
+        $_POST['reser_fecha_salida'] = date('Y-m-d H:i', strtotime($_POST['reser_fecha_salida'])); // Cambiado a guion bajo
+        $id = filter_var($_POST['reser_id'], FILTER_SANITIZE_NUMBER_INT);
+    
+        // Validación simple para asegurarse de que no hay campos vacíos
+        if (empty($id) || empty($_POST['clie_id']) || empty($_POST['habi_id']) || empty($_POST['reser_fecha_entrada']) || empty($_POST['reser_fecha_salida'])) {
+            http_response_code(400);
+            echo json_encode([
+                'codigo' => 0,
+                'mensaje' => 'Datos incompletos. Por favor, llena todos los campos.'
+            ]);
+            return;
+        }
+    
+        try {
+            // Buscar la reservación por ID
+            $reservacion = Reservacion::find($id);
+    
+            if (!$reservacion) {
+                http_response_code(404);
+                echo json_encode([
+                    'codigo' => 0,
+                    'mensaje' => 'Reservación no encontrada.'
+                ]);
+                return;
+            }
+    
+            // Sincronizar los nuevos datos
+            $reservacion->sincronizar($_POST);
+    
+            // Actualizar la reservación en la base de datos
+            $resultado = $reservacion->actualizar();
+    
+            if ($resultado) {
+                http_response_code(200);
+                echo json_encode([
+                    'codigo' => 1,
+                    'mensaje' => 'Reservación modificada exitosamente',
+                ]);
+            } else {
+                throw new Exception('Error al actualizar la reservación.');
+            }
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'codigo' => 0,
+                'mensaje' => 'Error al modificar Reservación',
+                'detalle' => $e->getMessage(),
+            ]);
+        }
+    }
+    
 }
