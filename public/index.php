@@ -9,6 +9,7 @@ use Controllers\HabitacionController;
 use Controllers\ReservacionController;
 use Controllers\EmpleadoController;
 use Controllers\ClienteController;
+use Controllers\FacturaController;
 use Model\Cliente;
 use Model\Empleado;
 
@@ -44,6 +45,14 @@ $router->post('/reservacion', [HabitacionController::class, 'reservacion']);
 $router->get('/reservacion/detalle', [ReservacionController::class, 'index']);
 $router->post('/reservacion/eliminar', [HabitacionController::class, 'eliminarReservacion']);
 $router->post('/reservacion/modificar', [HabitacionController::class, 'modificarReservacion']);
+
+
+//Factura
+$router->get('/factura', [FacturaController::class,'index']);
+$router->post('/API/factura/guardar', [FacturaController::class,'guardarAPI']);
+$router->post('/API/factura/modificar', [FacturaController::class,'modificarAPI']);
+$router->get('/API/factura/buscar', [FacturaController::class,'buscarAPI']);
+$router->post('/API/factura/eliminar', [FacturaController::class,'eliminarAPI']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
