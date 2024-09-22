@@ -1,14 +1,13 @@
 <?php 
 require_once __DIR__ . '/../includes/app.php';
 
-use Controllers\ReservacionController;
 use MVC\Router;
 use Controllers\AppController;
 use Controllers\EmpleadoController;
+use Controllers\ReservacionController;
 use Controllers\ClienteController;
 use Controllers\HabitacionController;
 use Controllers\InicioController;
-use Controllers\ReservacionController;
 use Controllers\FacturaController;
 use Controllers\ReporteController;
 use Controllers\MapaController;
@@ -35,7 +34,6 @@ $router->post('/API/cliente/eliminar', [ClienteController::class,'eliminarAPI'])
 
 //habitacion
 $router->get('/habitaciones', [HabitacionController::class, 'index']);
-
 $router->get('/habitaciones/detalle', [HabitacionController::class, 'detalle']);
 $router->post('/reservar', [HabitacionController::class, 'reservar']);
 $router->post('/api/habitaciones/guardar', [HabitacionController::class, 'guardarApi']);

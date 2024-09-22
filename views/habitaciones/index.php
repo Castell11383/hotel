@@ -1,85 +1,44 @@
-<style>
-.habitacion-card img {
-    transition: transform 0.3s ease-in-out;
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-left: 1cm;
-}
-
-.habitacion-card img:hover {
-    transform: scale(1.1);
-}
-
-.habitacion-card h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    color: #333;
-}
-
-.habitacion-card p {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1rem;
-    text-align: center;
-    color: #555;
-}
-
-.habitacion-card strong {
-    font-size: 1.2rem;
-    color: #000;
-}
-
-.btn-reservar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-reservar:hover {
-    background-color: #0056b3;
-}
-
-.btn-reservar i {
-    margin-right: 10px;
-}
-
-
-</style>
-
-
-
-<h1 class="text-center">Habitaciones</h1>
+<h1 class="text-center" style="font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: bold; color: #333;">
+    Habitaciones</h1>
 
 <div class="habitaciones row">
     <?php foreach($habitaciones as $habitacion) { ?>
-        <div class="habitacion-card col-md-4 mb-4" data-habitacion-id="<?php echo htmlspecialchars($habitacion['habi_id']); ?>">
-            <img src="<?php echo htmlspecialchars($habitacion['habi_imagen']); ?>" alt="<?php echo htmlspecialchars($habitacion['habi_tipo']); ?>" class="img-fluid">
-            <h2 class="mt-2"><?php echo htmlspecialchars($habitacion['habi_tipo']); ?></h2>
-            <p><?php echo htmlspecialchars($habitacion['habi_descripcion']); ?></p>
-            <p><strong>Precio: $<?php echo htmlspecialchars($habitacion['habi_precio']); ?></strong></p>
+    <div class="habitacion-card col-md-4 mb-4"
+        data-habitacion-id="<?php echo htmlspecialchars($habitacion['habi_id']); ?>"
+        style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 15px; overflow: hidden; background-color: #fff; transition: transform 0.3s ease;">
 
-            <?php if ($habitacion['situacion'] == 1) { ?>
-                <!-- Si la habitación ya está reservada, deshabilitar el botón -->
-                <button class="btn btn-secondary" disabled>Reservada</button>
-            <?php } else { ?>
-                <!-- Botón de Reservar con ícono, habilitado si la situación es distinta de 1 -->
-                <button 
-                    class="btn btn-reservar" 
-                    data-habitacion-id="<?php echo htmlspecialchars($habitacion['habi_id']); ?>"
-                    data-habitacion-tipo="<?php echo htmlspecialchars($habitacion['habi_tipo']); ?>"
-                    data-habitacion-precio="<?php echo htmlspecialchars($habitacion['habi_precio']); ?>">
-                    <i class="fas fa-calendar-check"></i> Reservar
-                </button>
-            <?php } ?>
-        </div>
+        <img src="<?php echo htmlspecialchars($habitacion['habi_imagen']); ?>"
+            alt="<?php echo htmlspecialchars($habitacion['habi_tipo']); ?>" class="img-fluid"
+            style="transition: transform 0.3s ease-in-out; width: 100%; height: 250px; object-fit: cover; border-radius: 10px;">
+
+        <h2
+            style="font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: bold; text-align: center; color: #333; margin-top: 15px;">
+            <?php echo htmlspecialchars($habitacion['habi_tipo']); ?>
+        </h2>
+
+        <p
+            style="font-family: 'Open Sans', sans-serif; font-size: 1rem; text-align: center; color: #555; margin: 10px 0;">
+            <?php echo htmlspecialchars($habitacion['habi_descripcion']); ?>
+        </p>
+
+        <p style="font-size: 1.2rem; color: #000; text-align: center;">
+            <strong>Precio: $<?php echo htmlspecialchars($habitacion['habi_precio']); ?></strong>
+        </p>
+
+        <?php if ($habitacion['situacion'] == 1) { ?>
+        <button class="btn btn-secondary" style="display: block; width: 100%; padding: 10px; margin-top: 10px;"
+            disabled>Reservada</button>
+        <?php } else { ?>
+        <button class="btn btn-reservar"
+            style="display: flex; justify-content: center; align-items: center; background-color: #007bff; color: white; padding: 10px 20px; border-radius: 5px; transition: background-color 0.3s ease; width: 100%; margin-top: 10px;"
+            data-habitacion-id="<?php echo htmlspecialchars($habitacion['habi_id']); ?>"
+            data-habitacion-tipo="<?php echo htmlspecialchars($habitacion['habi_tipo']); ?>"
+            data-habitacion-precio="<?php echo htmlspecialchars($habitacion['habi_precio']); ?>">
+            <i class="fas fa-calendar-check" style="margin-right: 10px;"></i> Reservar
+        </button>
+        <?php } ?>
+    </div>
     <?php } ?>
 </div>
-<script src="<?= asset('/build/js/habitaciones/index.js') ?>"></script>
+
+<script src="<?= asset('/build/js/habitaciones/index.js')?>"></script>
