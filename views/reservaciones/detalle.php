@@ -1,7 +1,7 @@
-<?php 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+<?php
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -35,10 +35,6 @@ error_reporting(E_ALL);
                 </li>
             </ul>
         </div>
-        <div class="d-flex">
-            <!-- <a href="/examenfinalMRRF/menuCliente" class="btn btn-info me-2">Menú Principal</a>
-            <a href="/examenfinalMRRF/logout" class="btn btn-danger">Cerrar Sesión</a> -->
-        </div>
     </div>
 </nav>
 
@@ -52,9 +48,9 @@ error_reporting(E_ALL);
             <div class="col">
                 <label for="habi_id">Seleccionar Habitación:</label>
                 <select name="habi_id" id="habi_id" class="form-control">
-                    <?php foreach($habitaciones as $habitacion): ?>
-                        <option value="<?php echo $habitacion['habi_id']; ?>">
-                            <?php echo $habitacion['habi_tipo']; ?> - $<?php echo $habitacion['habi_precio']; ?>
+                    <?php foreach ($habitaciones as $habitacion): ?>
+                        <option value="<?php echo htmlspecialchars($habitacion['habi_id']); ?>">
+                            <?php echo htmlspecialchars($habitacion['habi_tipo']); ?> - $<?php echo htmlspecialchars($habitacion['habi_precio']); ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
@@ -63,20 +59,20 @@ error_reporting(E_ALL);
         <div class="row mb-3">
             <div class="col">
                 <label for="clie_id">ID del Cliente:</label>
-                <input type="text" id="clie_id" value=" <?php echo $cliente ?> " class="form-control" required>
+                <input type="text" id="clie_id" name="clie_id" value="<?php echo htmlspecialchars($cliente); ?>" class="form-control" required>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
                 <label for="reser_fecha_entrada">Fecha de Entrada:</label>
-                <input type="date" id="reser_fecha_entrada" name="reser_fecha_entrada" class="form-control" required>
+                <input  id="reser_fecha_entrada" type="datetime-local"  name="reser_fecha_entrada" class="form-control" required>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
                 <label for="reser_fecha_salida">Fecha de Salida:</label>
-                <input type="date" id="reser_fecha_salida" name="reser_fecha_salida" class="form-control" required>
-            </div>
+                <input type="datetime-local" id="reser_fecha_salida"  name="reser_fecha_salida" class="form-control" required>
+            </div
         </div>
         <div class="row mb-3">
             <div class="col">
@@ -85,7 +81,6 @@ error_reporting(E_ALL);
         </div>
     </form>
 </div>
-
 
 <!-- Mensaje de éxito/error -->
 <div id="mensaje"></div>
@@ -106,14 +101,14 @@ error_reporting(E_ALL);
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($reservaciones as $reservacion): ?>
+                <?php foreach ($reservaciones as $reservacion): ?>
                     <tr>
-                        <td><?php echo $reservacion['reser_id']; ?></td>
-                        <td><?php echo $reservacion['reser_cliente']; ?></td>
-                        <td><?php echo $reservacion['reser_habitacion']; ?></td>
-                        <td><?php echo $reservacion['reser_fecha_entrada']; ?></td>
-                        <td><?php echo $reservacion['reser_fecha_salida']; ?></td>
-                        <td><?php echo $reservacion['reser_situacion'] == 1 ? 'Activa' : 'Cancelada'; ?></td>
+                        <td><?php echo htmlspecialchars($reservacion->reser_id); ?></td>
+                        <td><?php echo htmlspecialchars($reservacion->reser_cliente); ?></td>
+                        <td><?php echo htmlspecialchars($reservacion->reser_habitacion); ?></td>
+                        <td><?php echo htmlspecialchars($reservacion->reser_fecha_entrada); ?></td>
+                        <td><?php echo htmlspecialchars($reservacion->reser_fecha_salida); ?></td>
+                        <td><?php echo $reservacion->reser_situacion == 1 ? 'Activa' : 'Cancelada'; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -121,4 +116,4 @@ error_reporting(E_ALL);
     </div>
 </div>
 
-<script src="<?= asset('./build/js/reservaciones/index.js')  ?>"></script>
+<script src="<?= asset('/build/js/reservaciones/index.js') ?>"></script>

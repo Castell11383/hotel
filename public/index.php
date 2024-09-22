@@ -2,12 +2,12 @@
 require_once __DIR__ . '/../includes/app.php';
 
 
+use Controllers\ReservacionController;
 use MVC\Router;
 use Controllers\AppController;
-use Controllers\HabitacionController;
-use Controllers\ReservacionController;
 use Controllers\EmpleadoController;
 use Controllers\ClienteController;
+use Controllers\HabitacionController;
 use Model\Cliente;
 use Model\Empleado;
 
@@ -38,7 +38,7 @@ $router->post('/reservar', [HabitacionController::class, 'reservar']);
 $router->post('/api/habitaciones/guardar', [HabitacionController::class, 'guardarApi']);
 
 //reservaciones 
-$router->post('/reservacion', [HabitacionController::class, 'reservacion']);
+$router->post('/reservacion', [ReservacionController::class, 'reservacion']);
 $router->get('/reservacion/detalle', [ReservacionController::class, 'index']);
 $router->get('/API/reservaciones/buscar', [ReservacionController::class,'buscarApi']);
 $router->post('/API/reservaciones/guardar', [ReservacionController::class,'guardarApi']);

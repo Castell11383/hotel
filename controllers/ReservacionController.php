@@ -8,13 +8,15 @@ use Model\Cliente;
 use Model\Habitacion;
 use MVC\Router;
 
-class ReservacionController {
-    
+class ReservacionController
+{
+
     // Muestra habitaciones y reservaciones en una sola vista
-    public static function index(Router $router) {
+    public static function index(Router $router)
+    {
 
         $cliente = $_GET['id'];
-        
+
         $habitaciones = Habitacion::all();
         // $sql = "SELECT * from ........."
         // $habitacion = Cliente::fetchArray($sql);
@@ -28,15 +30,19 @@ class ReservacionController {
     }
 
     // Guardar la reservación usando AJAX
-    public static function guardarApi() {
+    public static function guardarApi()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 // Obtener los datos del formulario
+                
                 $cliente_id = $_POST['clie_id'];
                 $habitacion_id = $_POST['habi_id'];
-                $fecha_entrada = $_POST['reser_fecha_entrada'];
-                $fecha_salida = $_POST['reser_fecha_salida'];
-
+                $fecha_entrada = date('Y-m-d H:i', strtotime($_POST['reser_fecha_entrada']));
+                $fecha_salida = date('Y-m-d H:i', strtotime($_POST['reser_fecha_salida']));
+                
+                
+                
                 // Crear nueva reservación
                 $reservacion = new Reservacion([
                     'reser_cliente' => $cliente_id,

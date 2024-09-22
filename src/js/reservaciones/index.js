@@ -2,39 +2,39 @@ import Swal from "sweetalert2";
 import Datatable from "datatables.net-bs5";
 import { lenguaje } from "../lenguaje";
 import { validarFormulario, Toast, confirmacion } from "../funciones";
-
 const formulario = document.getElementById('form-reservacion');
 const btnGuardar = document.getElementById('btnGuardar');
 const divTabla = document.getElementById('tabla-reservaciones');
 
+
 // Inicializamos el Datatable
 let contador = 1;
-const datatable = new Datatable('#tabla-reservaciones', {
-    language: lenguaje,
-    data: null,
-    columns: [
-        {
-            title: 'NO',
-            render: () => contador++
-        },
-        {
-            title: 'CLIENTE',
-            data: 'reser_cliente'
-        },
-        {
-            title: 'HABITACION',
-            data: 'reser_habitacion'
-        },
-        {
-            title: 'ENTRADA',
-            data: 'reser_fecha_entrada'
-        },
-        {
-            title: 'SALIDA',
-            data: 'reser_fecha_salida'
-        }
-    ]
-});
+// const datatable = new Datatable('#tabla-reservaciones', {
+//     language: lenguaje,
+//     data: null,
+//     columns: [
+//         {
+//             title: 'NO',
+//             render: () => contador++
+//         },
+//         {
+//             title: 'CLIENTE',
+//             data: 'reser_cliente'
+//         },
+//         {
+//             title: 'HABITACION',
+//             data: 'reser_habitacion'
+//         },
+//         {
+//             title: 'ENTRADA',
+//             data: 'reser_fecha_entrada'
+//         },
+//         {
+//             title: 'SALIDA',
+//             data: 'reser_fecha_salida'
+//         }
+//     ]
+// });
 
 // Función para buscar reservaciones y llenar la tabla
 const buscar = async () => {
@@ -148,8 +148,8 @@ const eliminar = async (e) => {
 };
 
 // Inicializamos la búsqueda al cargar la página
-buscar();
+// buscar();
 
 // Asignamos los eventos a los botones
 btnGuardar.addEventListener('click', guardar);
-datatable.on('click', '.btn-danger', eliminar);
+// datatable.on('click', '.btn-danger', eliminar);
