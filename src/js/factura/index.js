@@ -11,6 +11,7 @@ const btnGuardar = document.getElementById('btnGuardar')
 const btnModificar = document.getElementById('btnModificar')
 const btnCancelar = document.getElementById('btnCancelar')
 
+
 let contador = 1;
 const datatable = new DataTable('#tablaFactura', {
     data: null,
@@ -71,9 +72,8 @@ const datatable = new DataTable('#tablaFactura', {
             orderable: false,
             render: (data, type, row, meta) => {
                 let html = `
-    
-                <button class='btn btn-danger eliminar' data-clie_id="${data}">PDF</button>
-                `
+                    <button class='btn btn-danger' onclick="window.location.href='/reporte/pdf?deta_id=${data}'">PDF</button>
+                `;
                 return html;
             }
         },
@@ -315,3 +315,4 @@ btnCancelar.addEventListener('click', cancelar)
 btnModificar.addEventListener('click', modificar)
 datatable.on('click', '.modificar', traerDatos)
 datatable.on('click', '.eliminar', eliminar)
+
