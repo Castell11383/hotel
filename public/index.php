@@ -1,7 +1,6 @@
 <?php 
 require_once __DIR__ . '/../includes/app.php';
 
-
 use MVC\Router;
 use Controllers\AppController;
 use Controllers\InicioController;
@@ -11,6 +10,7 @@ use Controllers\EmpleadoController;
 use Controllers\ClienteController;
 use Controllers\FacturaController;
 use Controllers\ReporteController;
+use Controllers\MapaController;
 use Model\Cliente;
 use Model\Empleado;
 
@@ -47,7 +47,6 @@ $router->get('/reservacion/detalle', [ReservacionController::class, 'index']);
 $router->post('/reservacion/eliminar', [HabitacionController::class, 'eliminarReservacion']);
 $router->post('/reservacion/modificar', [HabitacionController::class, 'modificarReservacion']);
 
-
 //Factura
 $router->get('/factura', [FacturaController::class,'index']);
 $router->post('/API/factura/guardar', [FacturaController::class,'guardarAPI']);
@@ -57,6 +56,9 @@ $router->post('/API/factura/eliminar', [FacturaController::class,'eliminarAPI'])
 
 //PDF
 $router->get('/pdf', [ReporteController::class, 'pdf']);
+
+//MAPA
+$router->get('/inicio', [MapaController::class, 'index']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

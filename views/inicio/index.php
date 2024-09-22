@@ -470,8 +470,13 @@
             <p>
                 Lago de Atitlán, Sololá, Guatemala<br>
                 Tel: +502 1234 5678<br>
-                Email: info@portaldellago.com
+                Email: hotelportaldellago@gmail.com
             </p>
+            <div class="row justify-content-center">
+                <div class="col-lg-15 border border-dark rounded shadow" id="map" style="height: 35vh; min-height: auto;">
+
+                </div>
+            </div>
         </div>
         <div class="contact-form">
             <h4>Reserva tu Habitación</h4>
