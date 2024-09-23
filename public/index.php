@@ -1,14 +1,14 @@
 <?php 
 require_once __DIR__ . '/../includes/app.php';
 
-use Controllers\ReservacionController;
 use MVC\Router;
 use Controllers\AppController;
+use Controllers\ReservacionController;
 use Controllers\EmpleadoController;
 use Controllers\ClienteController;
+use Controllers\DetalleController;
 use Controllers\HabitacionController;
 use Controllers\InicioController;
-use Controllers\ReservacionController;
 use Controllers\FacturaController;
 use Controllers\ReporteController;
 use Controllers\MapaController;
@@ -60,6 +60,10 @@ $router->get('/pdf', [ReporteController::class, 'pdf']);
 
 //MAPA
 $router->get('/inicio', [MapaController::class, 'index']);
+
+//detalle reservaciones
+$router->get('/detalle', [DetalleController::class, 'index']);
+
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
