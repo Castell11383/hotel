@@ -510,3 +510,7 @@
 </section>
 
 <script src="<?= asset('./build/js/inicio/index.js') ?>"></script>
+<?php
+var_dump($_SESSION)
+
+?>

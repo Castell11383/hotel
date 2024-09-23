@@ -14,6 +14,7 @@ module.exports = {
     'js/factura/index': './src/js/factura/index.js',
     'js/detalle/index': './src/js/detalle/index.js',
     'js/registro/index': './src/js/registro/index.js',
+    'js/login/index': './src/js/login/index.js',
   },
   output: {
     filename: '[name].js',
