@@ -44,4 +44,12 @@ class Cliente extends ActiveRecord
     }
 
     
+    public static function buscar()
+    {
+        $sql = "SELECT * FROM clientes where clie_situacion = 1";
+        return self::fetchArray($sql);
+    }
+
+
+    
 }

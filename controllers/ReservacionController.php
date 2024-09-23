@@ -20,12 +20,17 @@ class ReservacionController
         $habitaciones = Habitacion::all();
         // $sql = "SELECT * from ........."
         // $habitacion = Cliente::fetchArray($sql);
+
+         // Obtener las habitaciones ocupadas
+         $habitacionesOcupadas = Reservacion::obtenerHabitacionesOcupadas();
+
         $reservaciones = Reservacion::all();
 
         $router->render('reservaciones/detalle', [
             'cliente' => $cliente,
             'habitaciones' => $habitaciones,
-            'reservaciones' => $reservaciones
+            'reservaciones' => $reservaciones,
+            'habitacionesOcupadas' => $habitacionesOcupadas
         ]);
     }
 
