@@ -1,23 +1,16 @@
 <?php
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
 
 use Model\Cliente;
 
-
 $cliente = new Cliente($_GET);
 $clientes = $cliente->buscar()
-
 ?>
-
 
 <h1 class="text-center">Reservar una Habitación</h1>
 
 <div class="row justify-content-center mb-5">
-    <!-- Formulario de reservación -->
     <form class="col-lg-8 border bg-light p-3" id="form-reservacion">
-    <input type="hidden" name="reser_id" id="reser_id"> <!-- Este campo debe tener el mismo nombre que en el controlador -->
+    <input type="hidden" name="reser_id" id="reser_id"> 
     <div class="row mb-3">
     <div class="col">
         <label for="habi_id">Detalles de la Habitación:</label>
@@ -48,35 +41,30 @@ $clientes = $cliente->buscar()
             </div>
         </div>
 
-
-        
         <div class="row mb-3">
             <div class="col">
                 <label for="reser_fecha_entrada">Fecha de Entrada:</label>
-                <input  id="reser_fecha_entrada" type="datetime-local"  name="reser_fecha_entrada" class="form-control" required>
+                <input id="reser_fecha_entrada" type="datetime-local" name="reser_fecha_entrada" class="form-control" required>
             </div>
-        </div>
-        <div class="row mb-3">
             <div class="col">
                 <label for="reser_fecha_salida">Fecha de Salida:</label>
-                <input type="datetime-local" id="reser_fecha_salida"  name="reser_fecha_salida" class="form-control" required>
+                <input type="datetime-local" id="reser_fecha_salida" name="reser_fecha_salida" class="form-control" required>
             </div>
         </div>
-        <div class="row mb-3">
-            <div class="col">
+        <div class="row mb-3 justify-content-center text-center">
+            <div class="col-lg-5">
                 <button type="submit" id="btnGuardar" class="btn btn-primary w-100">Guardar Reservacion</button>
             </div>
-            <div class="col">
+            <div class="col-lg-5">
                 <button type="button" id="btnModificar" class="btn btn-warning w-100">Modificar</button>
             </div>
-            <div class="col">
+            <div class="col-lg-5">
                 <button type="button" id="btnCancelar" class="btn btn-danger w-100">Cancelar</button>
             </div>
         </div>
     </form>
 </div>
 
-<!-- Mensaje de éxito/error -->
 <div id="mensaje"></div>
 
 

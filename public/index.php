@@ -5,6 +5,7 @@ use MVC\Router;
 use Controllers\AppController;
 use Controllers\ReservacionController;
 use Controllers\EmpleadoController;
+use Controllers\ReservacionController;
 use Controllers\ClienteController;
 use Controllers\DetalleController;
 use Controllers\HabitacionController;
@@ -35,7 +36,6 @@ $router->post('/API/cliente/eliminar', [ClienteController::class,'eliminarAPI'])
 
 //habitacion
 $router->get('/habitaciones', [HabitacionController::class, 'index']);
-
 $router->get('/habitaciones/detalle', [HabitacionController::class, 'detalle']);
 $router->post('/reservar', [HabitacionController::class, 'reservar']);
 $router->post('/api/habitaciones/guardar', [HabitacionController::class, 'guardarApi']);
@@ -56,7 +56,7 @@ $router->get('/API/factura/buscar', [FacturaController::class,'buscarAPI']);
 $router->post('/API/factura/eliminar', [FacturaController::class,'eliminarAPI']);
 
 //PDF
-$router->get('/pdf', [ReporteController::class, 'pdf']);
+$router->post('/API/generarPDF', [ReporteController::class, 'pdf']);
 
 //MAPA
 $router->get('/inicio', [MapaController::class, 'index']);

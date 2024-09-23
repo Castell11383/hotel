@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
     <title>Hotel Portal del Lago</title>
 </head>
 
@@ -54,6 +57,34 @@
                         <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/hotel/cliente"><i class="bi bi-person-plus-fill"></i> Registrar</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-houses-fill"></i> Habitaciones
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/hotel/habitaciones"><i class="bi bi-house-gear-fill"></i> Tipos</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-house-add-fill"></i> Reservaciones
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/hotel/reservaciones/detalle"><i class="bi bi-house-lock-fill"></i> Reservacion</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/hotel/reservaciones/detalle"><i class="bi bi-clock-history"></i> Historial</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/hotel/factura"><i class="bi bi-file-earmark-text-fill"></i> Factura</a>
                             </li>
                         </ul>
                     </div>

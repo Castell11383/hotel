@@ -29,54 +29,44 @@ const datatable = new DataTable('#tablaFactura', {
             }
         },
         {
-            title: 'nombre del empleado',
-            data: 'deta_empleado'
+            title: 'Empleado',
+            data: 'nombre_empleado'
         },
         {
-            title: 'nombre del factura que reservo',
-            data: 'deta_reservacion'
+            title: 'Cliente',
+            data: 'nombre_cliente'
         },
         {
-            title: 'total a pagar',
-            data: 'deta_total'
+            title: 'Nit',
+            data: 'nit_cliente'
         },
         {
-            title: 'Modificar',
+            title: 'Habitacion',
+            data: 'tipo_habitacion'
+        },
+        {
+            title: 'Precio',
+            data: 'precio_habitacion'
+        },
+        {
+            title: 'Descripcion',
+            data: 'descripcion_habitacion'
+        },
+        {
+            title: 'Acciones',
             data: 'deta_id',
             searchable: false,
             orderable: false,
             render: (data, type, row, meta) => {
                 let html = `
-                <button class='btn btn-warning modificar' data-deta_id="${data}" data-deta_empleado="${row.deta_empleado}" data-deta_reservacion="${row.deta_reservacion}" data-deta_total="${row.deta_total}" data-saludo="hola mundo"><i class='bi bi-pencil-square'></i>Modificar</button>
-                
-                `
-                return html;
-            }
-        }, 
-        {
-            title: 'Eliminar',
-            data: 'deta_id',
-            searchable: false,
-            orderable: false,
-            render: (data, type, row, meta) => {
-                let html = `
+                <button class='btn btn-warning modificar' data-deta_id="${data}" data-nombre_empleado="${row.nombre_empleado}" data-nombre_cliente="${row.nombre_cliente}" data-precio_habitacion="${row.precio_habitacion}" data-saludo="hola mundo"><i class='bi bi-pencil-square'></i>Modificar</button>
                 <button class='btn btn-danger eliminar' data-deta_id="${data}">Eliminar</button>
+                <button class='btn btn-danger mostrarpdf' data-usuario='${data}'>PDF</button>
                 `
                 return html;
             }
         },
-        {
-            title: 'Generar Factura',
-            data: 'deta_id',
-            searchable: false,
-            orderable: false,
-            render: (data, type, row, meta) => {
-                let html = `
-                    <button class='btn btn-danger' onclick="window.location.href='/reporte/pdf?deta_id=${data}'">PDF</button>
-                `;
-                return html;
-            }
-        },
+    
         
 
     ]
@@ -162,9 +152,9 @@ const traerDatos = (e) => {
     const elemento = e.currentTarget.dataset
 
     formulario.deta_id.value = elemento.deta_id
-    formulario.deta_empleado.value = elemento.deta_empleado
-    formulario.deta_reservacion.value = elemento.deta_reservacion
-    formulario.deta_total.value = elemento.deta_total
+    formulario.nombre_empleado.value = elemento.nombre_empleado
+    formulario.nombre_cliente.value = elemento.nombre_cliente
+    formulario.precio_habitacion.value = elemento.precio_habitacion
     tabla.parentElement.parentElement.style.display = 'none'
 
     btnGuardar.parentElement.style.display = 'none'
@@ -309,10 +299,41 @@ const eliminar = async (factura) => {
     }
 }
 
+const generarPDF = async (e) => {
+    const id = e.currentTarget.dataset.usuario;
+
+    console.log(id)
+    
+
+    try {
+        const body = new FormData();
+        body.append('deta_id', id);
+
+        const url = '/hotel/API/generarPDF';
+        const config = {
+            method: 'POST',
+            body,
+        };
+
+        const respuesta = await fetch(url, config);
+
+        // Procesa la respuesta como un blob (archivo binario)
+        const blob = await respuesta.blob();
+
+        // Crea una URL para el blob y abre el PDF en una nueva pestaña
+        const urlBlob = window.URL.createObjectURL(blob);
+        window.open(urlBlob, '_blank'); // Abre el PDF en una nueva pestaña
+
+    } catch (error) {
+        console.log('Error al generar el PDF:', error);
+    }
+};
+
+
 
 formulario.addEventListener('submit', guardar)
 btnCancelar.addEventListener('click', cancelar)
 btnModificar.addEventListener('click', modificar)
 datatable.on('click', '.modificar', traerDatos)
 datatable.on('click', '.eliminar', eliminar)
-
+datatable.on('click', '.mostrarpdf', generarPDF)
