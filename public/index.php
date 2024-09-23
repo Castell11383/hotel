@@ -19,7 +19,7 @@ $router->setBaseURL('/' . $_ENV['APP_NAME']);
 //INICIO
 $router->get('/', [InicioController::class,'index']);
 
-// EMPLEADOS
+//EMPLEADOS
 $router->get('/empleados', [EmpleadoController::class, 'index']);
 $router->post('/API/empleado/guardar', [EmpleadoController::class, 'guardarAPI']);
 $router->get('/API/empleado/buscar', [EmpleadoController::class, 'buscarAPI']);
@@ -60,8 +60,9 @@ $router->post('/API/generarPDF', [ReporteController::class, 'pdf']);
 //MAPA
 $router->get('/inicio', [MapaController::class, 'index']);
 
-//detalle reservaciones
+//DETALLE
 $router->get('/detalle', [DetalleController::class, 'index']);
+$router->get('/API/detalle/index', [DetalleController::class, 'detalleReservacionAPI']);
 
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
