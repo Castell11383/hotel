@@ -1,7 +1,7 @@
 <div class="row justify-content-center mb-5 text-center">
     <form class="col-lg-4 border bg-light p-3 rounded" id="form-reservacion">
         <h2 class="text-center">Reservar una Habitación</h2>
-        <i class="bi bi-file-earmark-text-fill" style="font-size: 5rem;"></i>
+        <i class="bi bi-house-exclamation-fill" style="font-size: 5rem;"></i>
         <input type="hidden" name="reser_id" id="reser_id"> <!-- Este campo debe tener el mismo nombre que en el controlador -->
         <div class="row mb-3">
             <div class="col-8">

@@ -11,15 +11,14 @@ $reservaciones = $reservacion->buscar();
 
 ?>
 
-<h1 class="text-center">Formulario para Generar Facturas</h1>
 <div class="row justify-content-center mb-4">
-    <form id="formFactura" class="border shadow p-4 col-lg-4">
+    <form id="formFactura" class="border bg-light shadow rounded p-4 col-lg-4 text-center">
+        <h1 class="text-center">Generar Factura</h1>
+        <i class="bi bi-file-text-fill" style="font-size: 5rem;"></i>
         <input type="hidden" name="deta_id" id="deta_id">
-       
-
         <div class="row mb-3">
             <div class="col">
-                <label for="deta_empleado">empleado que genera la factura</label>
+                <label for="deta_empleado">Empleado</label>
                 <select name="deta_empleado" id="deta_empleado" class="form-control">
                     <option value="">SELECCIONE...</option>
                     <?php foreach ($empleados as $empleado) : ?>
@@ -27,12 +26,8 @@ $reservaciones = $reservacion->buscar();
                     <?php endforeach ?>
                 </select>
             </div>
-        </div>
-
-       
-        <div class="row mb-3">
             <div class="col">
-                <label for="deta_reservacion">Reservacion echa por el cliente</label>
+                <label for="deta_reservacion">Cliente</label>
                 <select name="deta_reservacion" id="deta_reservacion" class="form-control">
                     <option value="">SELECCIONE...</option>
                     <?php foreach ($reservaciones as $reservacion) : ?>
@@ -41,22 +36,22 @@ $reservaciones = $reservacion->buscar();
                 </select>
             </div>
         </div>
-        
-        <div class="row mb-3">
-            <div class="col">
-                <label for="deta_total">total a pagar</label>
+
+        <div class="row mb-3 justify-content-center text-center">
+            <div class="col-lg-8">
+                <label for="deta_total">Total</label>
                 <input type="number" name="deta_total" id="deta_total" class="form-control">
             </div>
         </div>
      
-        <div class="row">
-            <div class="col">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-5">
                 <button type="submit" id="btnGuardar" class="btn btn-primary w-100">Guardar</button>
             </div>
-            <div class="col">
+            <div class="col-lg-5">
                 <button type="button" id="btnModificar" class="btn btn-warning w-100">Modificar</button>
             </div>
-            <div class="col">
+            <div class="col-lg-5">
                 <button type="button" id="btnCancelar" class="btn btn-danger w-100">Cancelar</button>
             </div>
         </div>
@@ -68,4 +63,5 @@ $reservaciones = $reservacion->buscar();
         </table>
     </div>
 </div>
+
 <script src="<?= asset('./build/js/factura/index.js') ?>"></script>

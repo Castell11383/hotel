@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
     <title>Hotel Portal del Lago</title>
 </head>
 
@@ -79,6 +82,9 @@
                             </li>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/hotel/reservaciones/detalle"><i class="bi bi-clock-history"></i> Historial</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/hotel/factura"><i class="bi bi-file-earmark-text-fill"></i> Factura</a>
                             </li>
                         </ul>
                     </div>
