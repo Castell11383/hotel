@@ -1,4 +1,4 @@
-<div class="row mb-3 justify-content-center text-center">
+<div class="row mb-3 justify-content-center text-center bg-light rounded">
     <div class="col-lg-10">
     <h1 class="text-center mb-5" style="font-family: 'Playwrite DE Grund', sans-serif; font-size: 4rem; font-weight: bold; color: #333;">Habitaciones</h1>
         <div class="habitaciones row">
@@ -12,7 +12,7 @@
 
                     <p style="font-family: 'Open Sans', sans-serif; font-size: 1rem; text-align: center; color: #555; margin: 10px 0;"><?php echo htmlspecialchars($habitacion['habi_descripcion']); ?></p>
 
-                    <p style="font-size: 1.2rem; color: #000; text-align: center;"><strong>Precio: $<?php echo htmlspecialchars($habitacion['habi_precio']); ?></strong></p>
+                    <p style="font-size: 1.2rem; color: #000; text-align: center;"><strong>Precio: Q<?php echo htmlspecialchars($habitacion['habi_precio']); ?></strong></p>
 
                     <?php if ($habitacion['situacion'] == 1) { ?>
                         <button class="btn btn-secondary btn-sm w-50 mx-auto" style="padding: 5px 10px; margin-top: 10px;" disabled>
