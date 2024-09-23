@@ -19,8 +19,8 @@ $reservaciones = $reservacion->buscar();
 
         <div class="row mb-3">
             <div class="col">
-                <label for="deta_empleado">empleado que genera la factura</label>
-                <select name="deta_empleado" id="deta_empleado" class="form-control">
+                <label for="nombre_empleado">empleado que genera la factura</label>
+                <select name="nombre_empleado" id="nombre_empleado" class="form-control">
                     <option value="">SELECCIONE...</option>
                     <?php foreach ($empleados as $empleado) : ?>
                         <option value="<?= $empleado['emp_id'] ?>"> <?= $empleado['emp_nombres'] ?></option>
@@ -32,8 +32,8 @@ $reservaciones = $reservacion->buscar();
        
         <div class="row mb-3">
             <div class="col">
-                <label for="deta_reservacion">Reservacion echa por el cliente</label>
-                <select name="deta_reservacion" id="deta_reservacion" class="form-control">
+                <label for="nombre_cliente">Reservacion echa por el cliente</label>
+                <select name="nombre_cliente" id="nombre_cliente" class="form-control">
                     <option value="">SELECCIONE...</option>
                     <?php foreach ($reservaciones as $reservacion) : ?>
                         <option value="<?= $reservacion['reser_id'] ?>"> <?= $reservacion['clie_nombres'] ?></option>
@@ -44,10 +44,10 @@ $reservaciones = $reservacion->buscar();
         
         <div class="row mb-3">
             <div class="col">
-                <label for="deta_total">total a pagar</label>
-                <input type="number" name="deta_total" id="deta_total" class="form-control">
+                <label for="precio_habitacion">total a pagar</label>
+                <input type="hedden" name="precio_habitacion" id="precio_habitacion" class="form-control">
             </div>
-        </div>
+        </div> 
      
         <div class="row">
             <div class="col">

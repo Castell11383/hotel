@@ -27,7 +27,26 @@ class Factura extends ActiveRecord
 
     public static function obtenerFacturaconQuery()
     {
-        $sql = "SELECT * FROM detalle_factura where deta_situacion = 1";
+        $sql = "  SELECT 
+    DETA_ID,
+    EMP_NOMBRES AS nombre_empleado,
+    CLIE_NOMBRES AS nombre_cliente,
+    CLIE_NIT AS nit_cliente,
+    HABI_TIPO AS tipo_habitacion,
+    HABI_PRECIO AS precio_habitacion,
+    HABI_DESCRIPCION AS descripcion_habitacion
+FROM 
+    DETALLE_FACTURA 
+JOIN 
+    EMPLEADOS  ON DETA_EMPLEADO = EMP_ID
+JOIN 
+    RESERVACION  ON DETA_RESERVACION = RESER_ID
+JOIN 
+    CLIENTES  ON RESER_CLIENTE = CLIE_ID
+JOIN 
+    HABITACION  ON RESER_HABITACION = HABI_ID
+WHERE 
+    DETA_SITUACION = 1;";
         return self::fetchArray($sql);
     }
 

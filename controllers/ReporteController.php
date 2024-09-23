@@ -11,16 +11,16 @@ class ReporteController
 {
     public static function pdf(Router $router)
     {
+        $id = $_POST['deta_id'];
+        
+    //        // Obtener el deta_id de la consulta
+    // $detaId = $_GET['deta_id'] ?? null;
 
-
-           // Obtener el deta_id de la consulta
-    $detaId = $_GET['deta_id'] ?? null;
-
-    // Verificar que se haya recibido un ID válido
-    if ($detaId === null) {
-        // Manejar el error (por ejemplo, redirigir a una página de error o mostrar un mensaje)
-        die("ID no válido.");
-    }
+    // // Verificar que se haya recibido un ID válido
+    // if ($detaId === null) {
+    //     // Manejar el error (por ejemplo, redirigir a una página de error o mostrar un mensaje)
+    //     die("ID no válido.");
+    // }
     
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
@@ -33,26 +33,26 @@ class ReporteController
             "format" => "Letter"
         ]);
     
-        $productos = ActiveRecord::fetchArray("SELECT 
-            DETA_ID,
-            EMP_NOMBRES AS nombre_empleado,
-            CLIE_NOMBRES AS nombre_cliente,
-            HABI_TIPO AS habitacion_reservada,
-            RESER_FECHA_ENTRADA,
-            RESER_FECHA_SALIDA
-        FROM 
-            DETALLE_FACTURA 
-        JOIN 
-            EMPLEADOS ON DETA_EMPLEADO = EMP_ID
-        JOIN 
-            RESERVACION ON DETA_RESERVACION = RESER_ID
-        JOIN 
-            CLIENTES ON RESER_CLIENTE = CLIE_ID
-        JOIN 
-            HABITACION ON RESER_HABITACION = HABI_ID
-        WHERE 
-            DETA_SITUACION = 1
-            AND DETA_ID = 2;");
+        $productos = ActiveRecord::fetchArray(" SELECT 
+    DETA_ID,
+    EMP_NOMBRES AS nombre_empleado,
+    CLIE_NOMBRES AS nombre_cliente,
+    CLIE_NIT AS nit_cliente,
+    HABI_TIPO AS tipo_habitacion,
+    HABI_PRECIO AS precio_habitacion,
+    HABI_DESCRIPCION AS descripcion_habitacion
+FROM 
+    DETALLE_FACTURA 
+JOIN 
+    EMPLEADOS  ON DETA_EMPLEADO = EMP_ID
+JOIN 
+    RESERVACION  ON DETA_RESERVACION = RESER_ID
+JOIN 
+    CLIENTES  ON RESER_CLIENTE = CLIE_ID
+JOIN 
+    HABITACION  ON RESER_HABITACION = HABI_ID
+WHERE 
+    DETA_ID = $id;");
     
         $html = $router->load('pdf/reporte', [
             'productos' => $productos
