@@ -28,7 +28,7 @@ const datatable = new DataTable('#tablaCliente', {
             }
         },
         {
-            title: 'Nombre',
+            title: 'Nombre ',
             data: 'clie_nombres'
         },
         {
@@ -142,9 +142,6 @@ const buscar = async () => {
         const data = await respuesta.json();
         const { codigo, mensaje, detalle, datos } = data;
 
-        // tabla.tBodies[0].innerHTML = ''
-        // const fragment = document.createDocumentFragment();
-        console.log(datos);
         datatable.clear().draw();
 
         if (datos) {

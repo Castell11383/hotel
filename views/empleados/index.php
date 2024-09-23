@@ -1,3 +1,6 @@
+
+
+
 <div class="row justify-content-center text-center">
     <form class="border bg-light shadow rounded p-4 col-lg-5" id="formularioEmpleado">
         <h2 class="text-center mb-3"><b>Registro de Empleados</b></h2>
