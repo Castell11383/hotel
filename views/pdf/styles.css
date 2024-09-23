@@ -1,22 +1,85 @@
-.simple-table {
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, p {
+    text-align: center;
+}
+
+h1 {
+    color: #4CAF50;
+    font-size: 28px;
+}
+
+p {
+    font-size: 14px;
+    color: #555;
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    font-size: 16px;
-    text-align: left;
-    }
-    
-    .simple-table th,
-    .simple-table td {
-    padding: 12px 15px;
+}
+
+table th, table td {
     border: 1px solid #ddd;
-    }
-    
-    .simple-table thead {
-    background-color: #007bff;
+    padding: 8px;
+}
+
+table th {
+    background-color: #4CAF50;
     color: white;
-    }
-    
-    .simple-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-    }
+}
+
+table td {
+    text-align: center;
+}
+
+.simple-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.footer {
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+    margin-top: 20px;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 150px;
+}
+
+.header-details {
+    text-align: right;
+    margin-bottom: 30px;
+}
+
+.header-details p {
+    margin: 5px 0;
+}
+
+.total-row td {
+    font-weight: bold;
+    color: #333;
+}
+
+.highlight {
+    color: #4CAF50;
+    font-weight: bold;
+}

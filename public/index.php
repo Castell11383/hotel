@@ -54,7 +54,7 @@ $router->get('/API/factura/buscar', [FacturaController::class,'buscarAPI']);
 $router->post('/API/factura/eliminar', [FacturaController::class,'eliminarAPI']);
 
 //PDF
-$router->get('/pdf', [ReporteController::class, 'pdf']);
+$router->post('/API/generarPDF', [ReporteController::class, 'pdf']);
 
 //MAPA
 $router->get('/inicio', [MapaController::class, 'index']);
