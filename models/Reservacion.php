@@ -44,7 +44,16 @@ class Reservacion extends ActiveRecord {
     
     public static function obtenerReservacionconQuery()
     {
-        $sql = "SELECT * FROM reservacion where reser_situacion = 1";
+        $sql = "SELECT r.reser_id, 
+       c.clie_nombres, 
+       c.clie_apellidos, 
+       h.habi_tipo, 
+       r.reser_fecha_entrada, 
+       r.reser_fecha_salida
+FROM reservacion r
+JOIN clientes c ON r.reser_cliente = c.clie_id
+JOIN habitacion h ON r.reser_habitacion = h.habi_id
+WHERE r.reser_situacion = 1;";
         return self::fetchArray($sql);
     }
 
@@ -57,7 +66,7 @@ class Reservacion extends ActiveRecord {
         return self::fetchArray($sql);
     }
 
-
+//esta funcion sirve para mostrar el historial de reservaciones
     public static function mostrarDetallesReservacion() {
         $sql = "SELECT 
                     c.CLIE_NOMBRES || ' ' || c.CLIE_APELLIDOS AS NOMBRE_CLIENTE, 
@@ -85,4 +94,23 @@ class Reservacion extends ActiveRecord {
         return self::fetchArray($sql); // Ajusta el método `fetchArray` según tu implementación de la base de datos
     }
 
+
+    //funcion para que en la tabla de reservaciones aparezca texo no id 
+    // public function obtenerReservacionesConDetalles() {
+    //     // La consulta SQL para obtener los nombres de clientes y el tipo de habitación
+    //     $query = "
+    //         SELECT r.reser_id, 
+    //                c.clie_nombres, c.clie_apellidos, 
+    //                h.habi_tipo, 
+    //                r.reser_fecha_entrada, 
+    //                r.reser_fecha_salida
+    //         FROM reservaciones r
+    //         JOIN clientes c ON r.reser_cliente = c.clie_id
+    //         JOIN habitaciones h ON r.reser_habitacion = h.habi_id
+    //         AND reservacion where reser_situacion = 1
+    //     ";
+
+    // }
 }
+
+

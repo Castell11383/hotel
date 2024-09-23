@@ -79,6 +79,7 @@ class ReservacionController
         try {
             // ORM - ELOQUENT
             // $Reservaciones = Cliente::all();
+            
             $Reservaciones = Reservacion::obtenerReservacionconQuery();
             http_response_code(200);
             echo json_encode([
@@ -102,16 +103,15 @@ class ReservacionController
     //funcion modificar
     public static function modificarAPi()
     {
-
         // Sanitizar y validar las entradas
-        $_POST['clie_id'] = htmlspecialchars($_POST['clie_id']);
-        $_POST['habi_id'] = htmlspecialchars($_POST['habi_id']);
+        $_POST['clie_id'] = filter_var($_POST['clie_id'], FILTER_SANITIZE_NUMBER_INT); // Usar clie_id en lugar de clie_nombres y clie_apellidos
+        $_POST['habi_tipo'] = htmlspecialchars($_POST['habi_tipo']);
         $_POST['reser_fecha_entrada'] = date('Y-m-d H:i', strtotime($_POST['reser_fecha_entrada']));
-        $_POST['reser_fecha_salida'] = date('Y-m-d H:i', strtotime($_POST['reser_fecha_salida'])); // Cambiado a guion bajo
+        $_POST['reser_fecha_salida'] = date('Y-m-d H:i', strtotime($_POST['reser_fecha_salida']));
         $id = filter_var($_POST['reser_id'], FILTER_SANITIZE_NUMBER_INT);
     
         // Validación simple para asegurarse de que no hay campos vacíos
-        if (empty($id) || empty($_POST['clie_id']) || empty($_POST['habi_id']) || empty($_POST['reser_fecha_entrada']) || empty($_POST['reser_fecha_salida'])) {
+        if (empty($id) || empty($_POST['clie_id']) || empty($_POST['habi_tipo']) || empty($_POST['reser_fecha_entrada']) || empty($_POST['reser_fecha_salida'])) {
             http_response_code(400);
             echo json_encode([
                 'codigo' => 0,
