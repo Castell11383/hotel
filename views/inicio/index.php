@@ -331,7 +331,6 @@
         }
     }
 </style>
-
 <section class="hero">
     <div class="overlay"></div>
     <div class="hero-text">

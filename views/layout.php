@@ -59,7 +59,7 @@
                                 <a class="dropdown-item nav-link text-white " href="/hotel/reservaciones/detalle"><i class="bi bi-house-lock-fill"></i> Reservacion</a>
                             </li>
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/hotel/reservaciones/detalle"><i class="bi bi-clock-history"></i> Historial</a>
+                                <a class="dropdown-item nav-link text-white " href="/hotel/detalle"><i class="bi bi-clock-history"></i> Historial</a>
                             </li>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/hotel/factura"><i class="bi bi-file-earmark-text-fill"></i> Factura</a>

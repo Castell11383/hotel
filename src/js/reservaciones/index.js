@@ -31,19 +31,19 @@ const datatable = new DataTable('#tabla-reservaciones', {
             }
         },
         {
-            title: 'CLIENTE',
+            title: 'Cliente',
             data: 'reser_cliente'
         },
         {
-            title: 'HABITACION',
+            title: 'Habitación',
             data: 'reser_habitacion'
         },
         {
-            title: 'ENTRADA',
+            title: 'Entrada',
             data: 'reser_fecha_entrada'
         },
         {
-            title: 'SALIDA',
+            title: 'Salida',
             data: 'reser_fecha_salida'
         },
         
