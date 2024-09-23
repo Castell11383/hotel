@@ -31,6 +31,7 @@ const datatable = new DataTable('#tabla-reservaciones', {
             }
         },
         {
+
             title: 'CLIENTE',
             data: 'clie_nombres',  // Mostrar el nombre completo del cliente
             render: (data, type, row, meta) => {
@@ -40,13 +41,14 @@ const datatable = new DataTable('#tabla-reservaciones', {
         {
             title: 'HABITACION',
             data: 'habi_tipo',  // Mostrar el tipo de habitación
+
         },
         {
-            title: 'ENTRADA',
+            title: 'Entrada',
             data: 'reser_fecha_entrada'
         },
         {
-            title: 'SALIDA',
+            title: 'Salida',
             data: 'reser_fecha_salida'
         },
         

@@ -1,8 +1,8 @@
-<div class="container mt-5">
+<div class="container mt-2">
+    <h1 style=" color: blue; font-family:fantasy;" class="text-center">Historial de Reservaciones</h1>
     <div class="row justify-content-center">
         <div class="col-lg-11 table-responsive">
             <div class="text-center">
-            <h1 style=" color: blue; font-family:fantasy;">HISTORIAL DE RESERVACIONES</h1>
             </div>
             <table class="table table-bordered table-hover table-sm" style="border-color: #a1e3a1;">
                 <thead style="background-color: #a1e3a1; color: #fff;">
@@ -11,13 +11,13 @@
                     </tr>
                     <tr class="text-center">
                         <th style="background-color: #87d3c4;">NO.</th>
-                        <th style="background-color: #87d3c4;">CLIENTE</th>       
-                        <th style="background-color: #87d3c4;">TELEFONO</th>
-                        <th style="background-color: #87d3c4;">CORREO</th>
-                        <th style="background-color: #87d3c4;">ENTRADA</th>
-                        <th style="background-color: #87d3c4;">SALIDA</th>
-                        <th style="background-color: #87d3c4;">DETALLES DE LA HABITACIÓN</th>
-                        <th style="background-color: #87d3c4;">TOTAL</th>
+                        <th style="background-color: #87d3c4;">Cliente</th>       
+                        <th style="background-color: #87d3c4;">Teléfono</th>
+                        <th style="background-color: #87d3c4;">Correo</th>
+                        <th style="background-color: #87d3c4;">Entrada</th>
+                        <th style="background-color: #87d3c4;">Salida</th>
+                        <th style="background-color: #87d3c4;">Detalles</th>
+                        <th style="background-color: #87d3c4;">Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +36,7 @@
                         <?php endforeach; ?>
                     <?php } else { ?>
                         <tr class="text-center" style="background-color: #f4f4f4;">
-                            <td colspan="8" class="text-center">SIN RESERVACIONES</td>
+                            <td colspan="8" class="text-center">Sin reservaciones</td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -45,3 +45,4 @@
     </div>
 </div>
 
+<script src="<?= asset('./build/js/detalle/index.js') ?>"></script>
