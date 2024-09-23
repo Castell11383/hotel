@@ -32,11 +32,14 @@ const datatable = new DataTable('#tabla-reservaciones', {
         },
         {
             title: 'CLIENTE',
-            data: 'reser_cliente'
+            data: 'clie_nombres',  // Mostrar el nombre completo del cliente
+            render: (data, type, row, meta) => {
+                return `${row.clie_nombres} ${row.clie_apellidos}`;  // Concatenar nombre y apellido
+            }
         },
         {
             title: 'HABITACION',
-            data: 'reser_habitacion'
+            data: 'habi_tipo',  // Mostrar el tipo de habitación
         },
         {
             title: 'ENTRADA',
@@ -54,9 +57,8 @@ const datatable = new DataTable('#tabla-reservaciones', {
             orderable: false,
             render: (data, type, row, meta) => {
                 let html = `
-                <button class='btn btn-warning modificar' data-reser_id="${data}" data-reser_cliente="${row.reser_cliente}" data-reser_habitacion="${row.reser_habitacion}" data-reser_fecha_entrada="${row.reser_fecha_entrada}" data-reser_fecha_salida="${row.reser_fecha_salida}" data-saludo="hola mundo"><i class='bi bi-pencil-square'></i></button>
+              <button class='btn btn-warning modificar' data-reser_id="${data}" data-reser_cliente="${row.clie_nombres} ${row.clie_apellidos}" data-reser_habitacion="${row.habi_tipo}" data-reser_fecha_entrada="${row.reser_fecha_entrada}" data-reser_fecha_salida="${row.reser_fecha_salida}"><i class='bi bi-pencil-square'></i></button>
                 <button class='btn btn-danger eliminar' data-reser_id="${data}"><i class="bi bi-trash-fill"></i></button>
-
                 `
                 return html;
             }
@@ -149,17 +151,17 @@ const guardar = async (evento) => {
 const traerDatos = (e) => {
     const elemento = e.currentTarget.dataset;
 
-    const inputId = document.getElementById('reser_id'); // Asegúrate de tener un campo hidden con este id en el formulario
-    const inputCliente = document.getElementById('clie_id');
-    const inputHabitacion = document.getElementById('habi_id');
+    const inputId = document.getElementById('reser_id'); // ID de la reservación (campo hidden)
+    const selectCliente = document.getElementById('clie_id'); // Select del cliente
+    const inputHabitacion = document.getElementById('habi_id'); // Select de la habitación
     const inputEntrada = document.getElementById('reser_fecha_entrada');
     const inputSalida = document.getElementById('reser_fecha_salida');
 
-    if (inputId && inputCliente && inputHabitacion && inputEntrada && inputSalida) {
-        // Solo asignar si los elementos existen
+    if (inputId && selectCliente && inputHabitacion && inputEntrada && inputSalida) {
+        // Asignar valores
         inputId.value = elemento.reser_id;
-        inputCliente.value = elemento.reser_cliente;
-        inputHabitacion.value = elemento.reser_habitacion;
+        selectCliente.value = elemento.reser_cliente_id; // Asignar el clie_id al select
+        inputHabitacion.value = elemento.reser_habitacion_id; // Asignar el habi_id
         inputEntrada.value = elemento.reser_fecha_entrada;
         inputSalida.value = elemento.reser_fecha_salida;
     } else {
@@ -174,79 +176,79 @@ const traerDatos = (e) => {
     btnModificar.disabled = false;
     btnCancelar.parentElement.style.display = '';
     btnCancelar.disabled = false;
-}
-
+};
 const cancelar = () => {
     tabla.parentElement.parentElement.style.display = ''
     formulario.reset();
     btnGuardar.parentElement.style.display = ''
-    btnGuardar.disabled = false
-    btnModificar.parentElement.style.display = 'none'
-    btnModificar.disabled = true
-    btnCancelar.parentElement.style.display = 'none'
-    btnCancelar.disabled = true
-}
+    btnGuardar.disabled = false;
+    btnModificar.parentElement.style.display = 'none';
+    btnModificar.disabled = true;
+    btnCancelar.parentElement.style.display = 'none';
+    btnCancelar.disabled = true;
+};
 
 
 const modificar = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
+    // Validar que todos los campos del formulario estén completos
     if (!validarFormulario(formulario)) {
         Swal.fire({
-            title: "Campos vacios",
-            text: "Debe llenar todos los campos",
-            icon: "info"
-        })
-        return
+            title: "Campos vacíos",
+            text: "Debe llenar todos los campos para continuar.",
+            icon: "info",
+            confirmButtonText: "Entendido"
+        });
+        return;
     }
 
     try {
-        const body = new FormData(formulario)
-
-//   // Imprimir los datos enviados
-//   for (let [key, value] of body.entries()) { 
-//     console.log(key, value); 
-
-
-        const url = "/hotel/API/reservaciones/modificar"
+        const body = new FormData(formulario);  // Recoge los datos del formulario
+        const url = "/hotel/API/reservaciones/modificar";  // Asegúrate de que esta URL sea correcta
         const config = {
             method: 'POST',
             body
+        };
+
+        const respuesta = await fetch(url, config);  // Realiza la petición POST
+        const data = await respuesta.json();  // Convierte la respuesta a JSON
+        const { codigo, mensaje, detalle } = data;  // Extrae los campos de la respuesta
+
+        let icon = 'info';  // Define el ícono de notificación predeterminado
+        if (codigo === 1) {
+            icon = 'success';  // Si la respuesta es exitosa, se cambia el ícono
+            formulario.reset();  // Resetea el formulario
+            cancelar();  // Llama a la función para restablecer los botones y el formulario
+            buscar();  // Actualiza la tabla de reservaciones
+        } else if (codigo === 0) {
+            icon = 'error';  // En caso de error, muestra el ícono de error
+            console.error(detalle);  // Opcional: muestra el detalle del error en la consola
         }
 
-        const respuesta = await fetch(url, config);
-        const data = await respuesta.json();
-        const { codigo, mensaje, detalle } = data;
-        console.log(data);
-        let icon = 'info'
-        if (codigo == 1) {
-            icon = 'success'
-            formulario.reset();
-            buscar();
-            cancelar();
-        } else {
-            icon = 'error'
-            console.log(detalle);
-        }
-
-        Toast.fire({
+        // Muestra un SweetAlert con el resultado
+        Swal.fire({
             icon: icon,
-            title: mensaje
-        })
+            title: mensaje,
+            showConfirmButton: true
+        });
 
     } catch (error) {
+        // Captura cualquier error de la petición
         console.log(error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ocurrió un error al modificar la reservación. Inténtalo nuevamente.',
+            showConfirmButton: true
+        });
     }
-}
-
-
-// Función para eliminar una reservación
+};
 const eliminar = async (reservacion) => {
-    
-    const id = reservacion.currentTarget.dataset.reser_id
+    const id = reservacion.currentTarget.dataset.reser_id;
 
     let confirmacion = await Swal.fire({
-        title: '¿Está seguro de que desea eliminar esta reservacion?',
+        title: '¿Está seguro de que desea eliminar esta reservación?',
         text: "Esta acción es irreversible.",
         icon: 'warning',
         showDenyButton: true,
@@ -263,24 +265,23 @@ const eliminar = async (reservacion) => {
             denyButton: 'custom-deny-button'
         }
     });
-    if (confirmacion.isConfirmed) {
 
+    if (confirmacion.isConfirmed) {
         try {
-            const body = new FormData()
-            body.append('reser_id', id)
+            const body = new FormData();
+            body.append('reser_id', id);
 
             const url = '/hotel/API/reservaciones/eliminar';
             const config = {
                 method: 'POST',
                 body
-            }
+            };
 
             const respuesta = await fetch(url, config);
             const data = await respuesta.json();
-            const { codigo, mensaje, detalle } = data
+            const { codigo, mensaje, detalle } = data;
 
             if (codigo == 4) {
-
                 Swal.fire({
                     title: '¡Éxito!',
                     text: mensaje,
@@ -293,15 +294,16 @@ const eliminar = async (reservacion) => {
                         title: 'custom-title-class',
                         text: 'custom-text-class'
                     }
-
                 });
+                // Restablecer el formulario y actualizar la tabla
                 formulario.reset();
-                buscar();
+                cancelar(); // Resetea los botones y el formulario
+                buscar(); // Actualiza la tabla de reservaciones
             } else {
                 Swal.fire({
                     title: '¡Error!',
                     text: mensaje,
-                    icon: 'danger',
+                    icon: 'error',
                     showConfirmButton: false,
                     timer: 1500,
                     timerProgressBar: true,
@@ -310,11 +312,10 @@ const eliminar = async (reservacion) => {
                         title: 'custom-title-class',
                         text: 'custom-text-class'
                     }
-
                 });
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 };
@@ -327,8 +328,20 @@ const eliminar = async (reservacion) => {
     var isOcupada = selectedOption.getAttribute('data-ocupada') === 'true';
 
     if (isOcupada) {
-        alert('Esta habitación ya está reservada, por favor selecciona otra.');
-        this.value = ''; // Reinicia el valor del select para que no se seleccione la habitación ocupada
+        // Mostrar alerta con SweetAlert
+        Swal.fire({
+            icon: 'warning', // Tipo de ícono
+            title: '¡Habitación Ocupada!',
+            text: 'Esta habitación ya está reservada. Por favor, selecciona otra.',
+            showConfirmButton: true, // Mostrar botón de confirmación
+            confirmButtonText: 'Entendido', // Texto del botón de confirmación
+            customClass: {
+                popup: 'swal-wide' // Estilos personalizados si los necesitas
+            }
+        }).then(() => {
+            // Una vez que se cierre el SweetAlert, limpiar el valor del select
+            this.value = ''; // Reinicia el valor del select para que no se seleccione la habitación ocupada
+        });
     }
 });
 
