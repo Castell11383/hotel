@@ -126,7 +126,7 @@
                 </ul>
                 <div class="col-lg-1 d-grid mb-lg-0 mb-2">
 
-                    <a href="/hotel/" class="btn btn-danger"><i class="bi bi-arrow-bar-left"></i></a>
+                    <a href="/hotel/logout" class="btn btn-danger"><i class="bi bi-arrow-bar-left">salir</i></a>
                 </div>
 
             </div>
