@@ -5,7 +5,6 @@ use MVC\Router;
 use Controllers\AppController;
 use Controllers\ReservacionController;
 use Controllers\EmpleadoController;
-use Controllers\ReservacionController;
 use Controllers\ClienteController;
 use Controllers\DetalleController;
 use Controllers\HabitacionController;
