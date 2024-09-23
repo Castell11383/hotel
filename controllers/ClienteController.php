@@ -103,6 +103,7 @@ class ClienteController
             ]);
         }
     }
+    
     public static function eliminarAPI()
     {
         
