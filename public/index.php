@@ -52,6 +52,7 @@ $router->post('/API/factura/guardar', [FacturaController::class,'guardarAPI']);
 $router->post('/API/factura/modificar', [FacturaController::class,'modificarAPI']);
 $router->get('/API/factura/buscar', [FacturaController::class,'buscarAPI']);
 $router->post('/API/factura/eliminar', [FacturaController::class,'eliminarAPI']);
+$router->post('/API/factura/obtenertotal', [FacturaController::class,'totalAPI']);
 
 //PDF
 $router->post('/API/generarPDF', [ReporteController::class, 'pdf']);

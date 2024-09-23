@@ -10,6 +10,8 @@ const tabla = document.getElementById('tablaFactura')
 const btnGuardar = document.getElementById('btnGuardar')
 const btnModificar = document.getElementById('btnModificar')
 const btnCancelar = document.getElementById('btnCancelar')
+const inputSeleccionado = document.getElementById('deta_reservacion');
+const total = document.getElementById('deta_total');
 
 
 let contador = 1;
@@ -30,11 +32,11 @@ const datatable = new DataTable('#tablaFactura', {
         },
         {
             title: 'Empleado',
-            data: 'nombre_empleado'
+            data: 'deta_empleado'
         },
         {
             title: 'Cliente',
-            data: 'nombre_cliente'
+            data: 'deta_reservacion'
         },
         {
             title: 'Nit',
@@ -46,7 +48,7 @@ const datatable = new DataTable('#tablaFactura', {
         },
         {
             title: 'Precio',
-            data: 'precio_habitacion'
+            data: 'deta_total'
         },
         {
             title: 'Descripcion',
@@ -59,7 +61,7 @@ const datatable = new DataTable('#tablaFactura', {
             orderable: false,
             render: (data, type, row, meta) => {
                 let html = `
-                <button class='btn btn-warning modificar' data-deta_id="${data}" data-nombre_empleado="${row.nombre_empleado}" data-nombre_cliente="${row.nombre_cliente}" data-precio_habitacion="${row.precio_habitacion}" data-saludo="hola mundo"><i class='bi bi-pencil-square'></i>Modificar</button>
+                <button class='btn btn-warning modificar' data-deta_id="${data}" data-deta_empleado="${row.deta_empleado}" data-deta_reservacion="${row.deta_reservacion}" data-deta_total="${row.deta_total}" data-saludo="hola mundo"><i class='bi bi-pencil-square'></i>Modificar</button>
                 <button class='btn btn-danger eliminar' data-deta_id="${data}">Eliminar</button>
                 <button class='btn btn-danger mostrarpdf' data-usuario='${data}'>PDF</button>
                 `
@@ -152,9 +154,9 @@ const traerDatos = (e) => {
     const elemento = e.currentTarget.dataset
 
     formulario.deta_id.value = elemento.deta_id
-    formulario.nombre_empleado.value = elemento.nombre_empleado
-    formulario.nombre_cliente.value = elemento.nombre_cliente
-    formulario.precio_habitacion.value = elemento.precio_habitacion
+    formulario.deta_empleado.value = elemento.deta_empleado
+    formulario.deta_reservacion.value = elemento.deta_reservacion
+    formulario.deta_total.value = elemento.deta_total
     tabla.parentElement.parentElement.style.display = 'none'
 
     btnGuardar.parentElement.style.display = 'none'
@@ -317,18 +319,43 @@ const generarPDF = async (e) => {
 
         const respuesta = await fetch(url, config);
 
-        // Procesa la respuesta como un blob (archivo binario)
+       
         const blob = await respuesta.blob();
 
-        // Crea una URL para el blob y abre el PDF en una nueva pestaña
+        
         const urlBlob = window.URL.createObjectURL(blob);
-        window.open(urlBlob, '_blank'); // Abre el PDF en una nueva pestaña
+        window.open(urlBlob, '_blank'); 
 
     } catch (error) {
         console.log('Error al generar el PDF:', error);
     }
+
+    
 };
 
+const ObtenerTotal = async () =>{
+    const ReservaId = inputSeleccionado.options[inputSeleccionado.selectedIndex];
+    const ReservacionId = ReservaId.getAttribute('value')
+    try {
+        const body = new FormData();
+        body.append('reser_id', ReservacionId)
+        const url = '/hotel/API/factura/obtenertotal';
+        const config = {
+            method: 'POST',
+            body
+        }
+
+        const respuesta = await fetch(url, config);
+        const data = await respuesta.json();
+        
+        const totalobtenido = data.deta_total
+        total.value = totalobtenido
+        
+
+    } catch (error) {
+        
+    }
+}
 
 
 formulario.addEventListener('submit', guardar)
@@ -337,3 +364,5 @@ btnModificar.addEventListener('click', modificar)
 datatable.on('click', '.modificar', traerDatos)
 datatable.on('click', '.eliminar', eliminar)
 datatable.on('click', '.mostrarpdf', generarPDF)
+
+inputSeleccionado.addEventListener('change', ObtenerTotal)

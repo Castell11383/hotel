@@ -2,6 +2,7 @@
 
 namespace Model;
 
+
 class Factura extends ActiveRecord
 {
     protected static $tabla = 'detalle_factura';
@@ -29,11 +30,11 @@ class Factura extends ActiveRecord
     {
         $sql = "  SELECT 
     DETA_ID,
-    EMP_NOMBRES AS nombre_empleado,
-    CLIE_NOMBRES AS nombre_cliente,
+    EMP_NOMBRES AS deta_empleado,
+    CLIE_NOMBRES AS deta_reservacion,
     CLIE_NIT AS nit_cliente,
     HABI_TIPO AS tipo_habitacion,
-    HABI_PRECIO AS precio_habitacion,
+    HABI_PRECIO AS deta_total,
     HABI_DESCRIPCION AS descripcion_habitacion
 FROM 
     DETALLE_FACTURA 
