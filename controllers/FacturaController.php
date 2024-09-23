@@ -19,9 +19,11 @@ class FacturaController
 
     public static function guardarAPI()
     {
-        $_POST['deta_empleado'] = htmlspecialchars($_POST['deta_empleado']);
-        $_POST['deta_reservacion'] = htmlspecialchars($_POST['deta_reservacion']);
-        $_POST['deta_total'] = filter_var($_POST['deta_total'], FILTER_SANITIZE_NUMBER_INT);
+       
+        $_POST['nombre_empleado'] = htmlspecialchars($_POST['nombre_empleado']);
+        $_POST['nombre_cliente'] = htmlspecialchars($_POST['nombre_cliente']);
+        $_POST['precio_habitacion'] = filter_var($_POST['precio_habitacion'], FILTER_SANITIZE_NUMBER_INT);
+        $id = filter_var($_POST['deta_id'], FILTER_SANITIZE_NUMBER_INT);
         
         
         try {
@@ -68,9 +70,9 @@ class FacturaController
 
     public static function modificarAPI()
     {
-        $_POST['deta_empleado'] = htmlspecialchars($_POST['deta_empleado']);
-        $_POST['deta_reservacion'] = htmlspecialchars($_POST['deta_reservacion']);
-        $_POST['deta_total'] = filter_var($_POST['deta_total'], FILTER_SANITIZE_NUMBER_INT);
+        $_POST['nombre_empleado'] = htmlspecialchars($_POST['nombre_empleado']);
+        $_POST['nombre_cliente'] = htmlspecialchars($_POST['nombre_cliente']);
+        $_POST['precio_habitacion'] = filter_var($_POST['precio_habitacion'], FILTER_SANITIZE_NUMBER_INT);
         $id = filter_var($_POST['deta_id'], FILTER_SANITIZE_NUMBER_INT);
         try {
 

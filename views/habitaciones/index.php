@@ -33,6 +33,4 @@
     </div>
 </div>
 
-
-
 <script src="<?= asset('/build/js/habitaciones/index.js') ?>"></script>

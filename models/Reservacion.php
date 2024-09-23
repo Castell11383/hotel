@@ -38,6 +38,10 @@ class Reservacion extends ActiveRecord {
 
     //     return $stmt->execute();  // Ejecutar la consulta y devolver true o false
     // }
+
+
+
+    
     public static function obtenerReservacionconQuery()
     {
         $sql = "SELECT * FROM reservacion where reser_situacion = 1";
@@ -51,6 +55,34 @@ class Reservacion extends ActiveRecord {
         JOIN clientes  ON reser_cliente = clie_id
         WHERE reser_situacion = 1;";
         return self::fetchArray($sql);
+    }
+
+
+    public static function mostrarDetallesReservacion() {
+        $sql = "SELECT 
+                    c.CLIE_NOMBRES || ' ' || c.CLIE_APELLIDOS AS NOMBRE_CLIENTE, 
+                    c.CLIE_TELEFONO AS TELEFONO,
+                    c.CLIE_CORREO AS CORREO, 
+                    r.RESER_FECHA_ENTRADA AS ENTRADA, 
+                    r.RESER_FECHA_SALIDA AS SALIDA, 
+                    h.HABI_TIPO || ' - ' || h.HABI_DESCRIPCION AS DETALLES_HABITACION,
+                    h.HABI_PRECIO AS TOTAL
+                FROM 
+                    clientes c
+                INNER JOIN 
+                    reservacion r ON c.CLIE_ID = r.RESER_CLIENTE
+                INNER JOIN 
+                    habitacion h ON r.RESER_HABITACION = h.HABI_ID
+                WHERE 
+                    r.RESER_SITUACION = 1";
+        return self::fetchArray($sql);
+    }
+
+
+    //funciones para obtener las habitaciones ocupadas
+    public static function obtenerHabitacionesOcupadas() {
+        $sql = "SELECT reser_habitacion FROM reservacion WHERE reser_situacion = 1";
+        return self::fetchArray($sql); // Ajusta el método `fetchArray` según tu implementación de la base de datos
     }
 
 }

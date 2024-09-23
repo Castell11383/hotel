@@ -3,9 +3,11 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\AppController;
+use Controllers\ReservacionController;
 use Controllers\EmpleadoController;
 use Controllers\ReservacionController;
 use Controllers\ClienteController;
+use Controllers\DetalleController;
 use Controllers\HabitacionController;
 use Controllers\InicioController;
 use Controllers\FacturaController;
@@ -54,10 +56,14 @@ $router->get('/API/factura/buscar', [FacturaController::class,'buscarAPI']);
 $router->post('/API/factura/eliminar', [FacturaController::class,'eliminarAPI']);
 
 //PDF
-$router->get('/pdf', [ReporteController::class, 'pdf']);
+$router->post('/API/generarPDF', [ReporteController::class, 'pdf']);
 
 //MAPA
 $router->get('/inicio', [MapaController::class, 'index']);
+
+//detalle reservaciones
+$router->get('/detalle', [DetalleController::class, 'index']);
+
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

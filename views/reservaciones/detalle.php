@@ -1,22 +1,43 @@
-<div class="row justify-content-center mb-5 text-center">
-    <form class="col-lg-4 border bg-light p-3 rounded" id="form-reservacion">
-        <h2 class="text-center">Reservar una Habitación</h2>
-        <i class="bi bi-house-exclamation-fill" style="font-size: 5rem;"></i>
-        <input type="hidden" name="reser_id" id="reser_id"> <!-- Este campo debe tener el mismo nombre que en el controlador -->
+<?php
+
+use Model\Cliente;
+
+$cliente = new Cliente($_GET);
+$clientes = $cliente->buscar()
+?>
+
+<h1 class="text-center">Reservar una Habitación</h1>
+
+<div class="row justify-content-center mb-5">
+    <form class="col-lg-8 border bg-light p-3" id="form-reservacion">
+    <input type="hidden" name="reser_id" id="reser_id"> 
+    <div class="row mb-3">
+    <div class="col">
+        <label for="habi_id">Detalles de la Habitación:</label>
+        <select name="habi_id" id="habi_id" class="form-control">
+            <?php foreach ($habitaciones as $habitacion): ?>
+                <option 
+                    value="<?php echo htmlspecialchars($habitacion['habi_id']); ?>" 
+                    data-ocupada="<?= in_array($habitacion['habi_id'], array_column($habitacionesOcupadas, 'reser_habitacion')) ? 'true' : 'false' ?>">
+                    <?php echo htmlspecialchars($habitacion['habi_id']); ?>  
+                    <?php echo htmlspecialchars($habitacion['habi_tipo']); ?> - $<?php echo htmlspecialchars($habitacion['habi_precio']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>
+
+
         <div class="row mb-3">
-            <div class="col-8">
-                <label for="habi_id">Detalles de la Habitación:</label>
-                <select name="habi_id" id="habi_id" class="form-control">
-                    <?php foreach ($habitaciones as $habitacion): ?>
-                        <option value="<?php echo htmlspecialchars($habitacion['habi_id']); ?>">
-                            <?php echo htmlspecialchars($habitacion['habi_tipo']); ?> - $<?php echo htmlspecialchars($habitacion['habi_precio']); ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
             <div class="col">
-                <label for="clie_id">ID del Cliente:</label>
-                <input type="text" id="clie_id" name="clie_id" value="<?php echo htmlspecialchars($cliente); ?>" class="form-control" required>
+                <label for="clie_id">Reservacion echa por el cliente</label>
+                <select name="clie_id" id="clie_id" class="form-control">
+                    <option value="">SELECCIONE...</option>
+                    <?php foreach ($clientes as $cliente) : ?>
+                        <option value="<?= $cliente['clie_id'] ?>"> <?= $cliente['clie_nombres'] ?> <?= $cliente['clie_apellidos'] ?>
+                    </option>
+                    <?php endforeach ?>
+                </select>
             </div>
         </div>
 
@@ -44,7 +65,6 @@
     </form>
 </div>
 
-<!-- Mensaje de éxito/error -->
 <div id="mensaje"></div>
 
 
