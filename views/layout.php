@@ -52,6 +52,23 @@
 
                     <div class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-house-add-fill"></i> Reservaciones
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/hotel/reservaciones/detalle"><i class="bi bi-house-lock-fill"></i> Reservacion</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/hotel/reservaciones/detalle"><i class="bi bi-clock-history"></i> Historial</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/hotel/factura"><i class="bi bi-file-earmark-text-fill"></i> Factura</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-person-lines-fill"></i> Clientes
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
@@ -72,22 +89,6 @@
                         </ul>
                     </div>
 
-                    <div class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-house-add-fill"></i> Reservaciones
-                        </a>
-                        <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/hotel/reservaciones/detalle"><i class="bi bi-house-lock-fill"></i> Reservacion</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/hotel/reservaciones/detalle"><i class="bi bi-clock-history"></i> Historial</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/hotel/factura"><i class="bi bi-file-earmark-text-fill"></i> Factura</a>
-                            </li>
-                        </ul>
-                    </div>
 
                 </ul>
                 <div class="col-lg-1 d-grid mb-lg-0 mb-2">

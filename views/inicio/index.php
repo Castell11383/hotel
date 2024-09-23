@@ -463,29 +463,49 @@
 </section>
 
 <section class="contact-section">
-    <h2>Contáctanos</h2>
-    <div class="contact-container">
-        <div class="contact-info">
+    <div class="contact-container row">
+        <div class="contact-info col-lg-2">
+            <h2>Contáctanos</h2>
             <h4>Nuestra Ubicación</h4>
             <p>
                 Lago de Atitlán, Sololá, Guatemala<br>
                 Tel: +502 1234 5678<br>
-                Email: hotelportaldellago@gmail.com
+                Correo: hotelportaldellago@gmail.com
             </p>
-            <div class="row justify-content-center">
-                <div class="col-lg-15 border border-dark rounded shadow" id="map" style="height: 35vh; min-height: auto;">
-
+            <div class="row">
+                <div class="col">
+                    <a href="https://www.facebook.com" target="_blank">
+                        <i class="bi bi-facebook bg-primary bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="https://wa.me/1234567890" target="_blank">
+                        <i class="bi bi-whatsapp bg-success bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="https://www.instagram.com" target="_blank">
+                        <i class="bi bi-instagram text-white p-2 rounded-circle" style="background-color: fuchsia; font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="https://twitter.com" target="_blank">
+                        <i class="bi bi-twitter bg-info bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="https://www.youtube.com" target="_blank">
+                        <i class="bi bi-youtube bg-danger bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="contact-form">
-            <h4>Reserva tu Habitación</h4>
-            <form>
-                <input type="text" placeholder="Nombre Completo" required>
-                <input type="email" placeholder="Correo Electrónico" required>
-                <input type="text" placeholder="Teléfono" required>
-                <button type="submit">Enviar</button>
-            </form>
+        <div class=" contact-form col-lg">
+            <div class="row justify-content-center">
+                <div class="col-lg-15 border border-dark rounded shadow" id="map" style="height: 35vh; width: 250vh; min-height: auto;">
+
+                </div>
+            </div>
         </div>
     </div>
 </section>
