@@ -12,6 +12,7 @@ use Controllers\InicioController;
 use Controllers\FacturaController;
 use Controllers\ReporteController;
 use Controllers\MapaController;
+use Controllers\RegistroController;
 
 $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
@@ -32,6 +33,7 @@ $router->post('/API/cliente/guardar', [ClienteController::class,'guardarAPI']);
 $router->post('/API/cliente/modificar', [ClienteController::class,'modificarAPI']);
 $router->get('/API/cliente/buscar', [ClienteController::class,'buscarAPI']);
 $router->post('/API/cliente/eliminar', [ClienteController::class,'eliminarAPI']);
+
 
 //habitacion
 $router->get('/habitaciones', [HabitacionController::class, 'index']);
@@ -63,6 +65,10 @@ $router->get('/inicio', [MapaController::class, 'index']);
 
 //detalle reservaciones
 $router->get('/detalle', [DetalleController::class, 'index']);
+
+//registro clientes
+$router->get('/registro', [RegistroController::class,'index']);
+$router->post('/API/registro/guardar', [RegistroController::class,'guardarAPI']);
 
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador

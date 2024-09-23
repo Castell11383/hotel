@@ -72,7 +72,7 @@ const datatable = new DataTable('#tablaCliente', {
                 let html = `
                 <button class='btn btn-warning modificar' data-clie_id="${data}" data-clie_nombres="${row.clie_nombres}" data-clie_apellidos="${row.clie_apellidos}" data-clie_genero="${row.clie_genero}" data-clie_correo="${row.clie_correo}" data-clie_direccion="${row.clie_direccion}" data-clie_telefono="${clie_telefono}" data-clie_pais="${row.clie_pais}" data-clie_nit="${row.clie_nit} data-clie_password="${row.clie_password}"><i class='bi bi-pencil-square'></i></button>
                 
-                <button class='btn btn-error bg-danger eliminar' data-emp_id="${data}"><i class="bi bi-trash-fill"></i></button>
+                <button class='btn btn-error bg-danger eliminar' data-clie_id="${data}"><i class="bi bi-trash-fill"></i></button>
 
                 `
                 return html;
@@ -236,6 +236,8 @@ const modificar = async (e) => {
 const eliminar = async (cliente) => {
     
     const id = cliente.currentTarget.dataset.clie_id
+    //console.log(id)
+    
 
     let confirmacion = await Swal.fire({
         title: '¿Está seguro de que desea eliminar este empleado?',
