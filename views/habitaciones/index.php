@@ -1,9 +1,9 @@
-<div class="row mb-3 justify-content-center text-center bg-light rounded">
+<div class="row mb-3 justify-content-center text-center rounded mt-5">
     <div class="col-lg-10">
     <h1 class="text-center mb-5" style="font-family: 'Playwrite DE Grund', sans-serif; font-size: 4rem; font-weight: bold; color: #333;">Habitaciones</h1>
         <div class="habitaciones row">
             <?php foreach ($habitaciones as $habitacion) { ?>
-                <div class="habitacion-card col-md-4 mb-4"
+                <div class="habitacion-card col-md-4 mb-4 p-3"
                     data-habitacion-id="<?php echo htmlspecialchars($habitacion['habi_id']); ?>"
                     style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 15px; overflow: hidden; background-color: #fff; transition: transform 0.3s ease;">
 

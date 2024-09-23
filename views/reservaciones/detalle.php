@@ -6,7 +6,7 @@ $cliente = new Cliente($_GET);
 $clientes = $cliente->buscar()
 ?>
 
-<div class="row justify-content-center mb-5">
+<div class="row justify-content-center mb-5 mt-5">
     <form class="col-lg-5 border bg-light p-3 text-center rounded" id="form-reservacion">
         <h1 class="text-center">Reservación</h1>
         <i class="bi bi-file-earmark-medical-fill" style="font-size: 5rem;"></i>

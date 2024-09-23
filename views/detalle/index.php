@@ -1,5 +1,5 @@
-<div class="container mt-2">
-    <h1 style=" color: blue; font-family:fantasy;" class="text-center">Historial de Reservaciones</h1>
+<div class="container mt-5">
+    <h1 style=" color: blue; font-family:Playwrite DE Grund;" class="text-center mb-5"><b>Historial de Reservaciones</b></h1>
     <div class="row justify-content-center">
         <div class="col-lg-12 table-responsive">
             <div class="text-center">
@@ -45,9 +45,9 @@
     </div>
 </div>
 
-<div class="row justify-content-center text-center">
-    <h3 class="class text-center" style=" color: blue; font-family:fantasy;">Gráfica habitaciones reservadas</h3>
-    <div class="col-lg-5 border border-dark rounded shadow">
+<div class="row justify-content-center text-center mt-4">
+    <h3 class="class text-center mb-4" style=" color: blue; font-family:Playwrite DE Grund;"><b>Gráfica habitaciones reservadas</b></h3>
+    <div class="col-lg-5 border border-dark bg-white rounded shadow">
         <div class="row justify-content-center text-center">
             <div class="col">
                 <canvas id="chartVentas" width="100%"></canvas>
