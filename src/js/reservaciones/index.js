@@ -31,19 +31,19 @@ const datatable = new DataTable('#tabla-reservaciones', {
             }
         },
         {
-            title: 'CLIENTE',
+            title: 'Cliente',
             data: 'reser_cliente'
         },
         {
-            title: 'HABITACION',
+            title: 'Habitación',
             data: 'reser_habitacion'
         },
         {
-            title: 'ENTRADA',
+            title: 'Entrada',
             data: 'reser_fecha_entrada'
         },
         {
-            title: 'SALIDA',
+            title: 'Salida',
             data: 'reser_fecha_salida'
         },
         
@@ -240,12 +240,6 @@ const modificar = async (e) => {
 }
 
 
-
-
-
-
-
-
 // Función para eliminar una reservación
 const eliminar = async (reservacion) => {
     
@@ -324,6 +318,20 @@ const eliminar = async (reservacion) => {
         }
     }
 };
+
+
+
+  // Agrega alertas para mostrar si estan ocupadas
+  document.getElementById('habi_id').addEventListener('change', function() {
+    var selectedOption = this.options[this.selectedIndex];
+    var isOcupada = selectedOption.getAttribute('data-ocupada') === 'true';
+
+    if (isOcupada) {
+        alert('Esta habitación ya está reservada, por favor selecciona otra.');
+        this.value = ''; // Reinicia el valor del select para que no se seleccione la habitación ocupada
+    }
+});
+
 
 // Inicializamos la búsqueda al cargar la página
 // buscar();

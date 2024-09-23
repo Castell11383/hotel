@@ -74,7 +74,7 @@
 </div>
 
 <div class="row justify-content-center mt-5">
-    <div class="col table-responsive col-lg-12 table-wrapper border shadow bg-light rounded">
+    <div class="col table-responsive col-lg-11 table-wrapper border shadow bg-light rounded">
         <table class="table table-bordered table-hover w-100 text-center shadow" id="tablaCliente"></table>
     </div>
 </div>

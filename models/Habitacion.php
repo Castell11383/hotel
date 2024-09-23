@@ -30,6 +30,11 @@ class Habitacion extends ActiveRecord {
         return self::fetchArray($query);
     }
 
+    public static function buscar()
+    {
+        $sql = "SELECT * FROM habitacion where habi_situacion = 1";
+        return self::fetchArray($sql);
+    }
 
     // // Encontrar una habitación por su ID
 //       public static function find($id) {

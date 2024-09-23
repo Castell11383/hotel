@@ -18,15 +18,12 @@ let contador = 1;
 const datatable = new DataTable('#tablaFactura', {
     data: null,
     language: lenguaje,
-    pageLength: '15',
-    lengthMenu: [3, 9, 11, 25, 100],
     columns: [
         {
             title: 'No.',
             data: 'deta_id',
             width: '2%',
             render: (data, type, row, meta) => {
-                // console.log(meta.ro);
                 return meta.row + 1;
             }
         },
@@ -61,16 +58,16 @@ const datatable = new DataTable('#tablaFactura', {
             orderable: false,
             render: (data, type, row, meta) => {
                 let html = `
-                <button class='btn btn-warning modificar' data-deta_id="${data}" data-deta_empleado="${row.deta_empleado}" data-deta_reservacion="${row.deta_reservacion}" data-deta_total="${row.deta_total}" data-saludo="hola mundo"><i class='bi bi-pencil-square'></i>Modificar</button>
-                <button class='btn btn-danger eliminar' data-deta_id="${data}">Eliminar</button>
-                <button class='btn btn-danger mostrarpdf' data-usuario='${data}'>PDF</button>
+
+                <button class='btn btn-warning modificar' data-deta_id="${data}" data-nombre_empleado="${row.nombre_empleado}" data-nombre_cliente="${row.nombre_cliente}" data-precio_habitacion="${row.precio_habitacion}"><i class='bi bi-pencil-square'></i></button>
+
+                <button class='btn btn-error bg-danger eliminar' data-deta_id="${data}"><i class="bi bi-trash-fill"></i></button>
+                <button class='btn btn-success mostrarpdf' data-usuario='${data}'><i class="bi bi-eye-fill"></i></button>
+
                 `
                 return html;
             }
         },
-    
-        
-
     ]
 })
 
@@ -361,6 +358,7 @@ const ObtenerTotal = async () =>{
 formulario.addEventListener('submit', guardar)
 btnCancelar.addEventListener('click', cancelar)
 btnModificar.addEventListener('click', modificar)
+
 datatable.on('click', '.modificar', traerDatos)
 datatable.on('click', '.eliminar', eliminar)
 datatable.on('click', '.mostrarpdf', generarPDF)

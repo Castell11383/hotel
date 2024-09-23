@@ -12,15 +12,17 @@ $reservaciones = $reservacion->buscar();
 ?>
 
 <div class="row justify-content-center mb-4">
-    <form id="formFactura" class="border bg-light shadow rounded p-4 col-lg-4 text-center">
+    <form id="formFactura" class="border bg-light shadow rounded p-4 col-lg-5 text-center">
         <h1 class="text-center">Generar Factura</h1>
         <i class="bi bi-file-text-fill" style="font-size: 5rem;"></i>
         <input type="hidden" name="deta_id" id="deta_id">
         <div class="row mb-3">
             <div class="col">
 
+
                 <label for="deta_empleado">empleado que genera la factura</label>
                 <select name="deta_empleado" id="deta_empleado" class="form-control">
+
 
                     <option value="">SELECCIONE...</option>
                     <?php foreach ($empleados as $empleado) : ?>
@@ -30,8 +32,10 @@ $reservaciones = $reservacion->buscar();
             </div>
             <div class="col">
 
+
                 <label for="deta_reservacion">Reservacion echa por el cliente</label>
                 <select name="deta_reservacion" id="deta_reservacion" class="form-control">
+
 
                     <option value="">SELECCIONE...</option>
                     <?php foreach ($reservaciones as $reservacion) : ?>
@@ -41,11 +45,13 @@ $reservaciones = $reservacion->buscar();
             </div>
         </div>
 
+
         
         <div class="row mb-3">
             <div class="col">
                 <label for="deta_total">total a pagar</label>
                 <input type="text" name="deta_total" id="deta_total" class="form-control">
+
 
 
             </div>
@@ -64,9 +70,9 @@ $reservaciones = $reservacion->buscar();
         </div>
     </form>
 </div>
-<div class="row">
-    <div class="col table-responsive">
-        <table class="table table-bordered table-hover w-100" id="tablaFactura">
+<div class="row justify-content-center text-center mt-5">
+    <div class="col-lg-10 table-responsive col-lg-11 table-wrapper border shadow bg-light rounded">
+        <table class="table table-bordered table-hover w-100 text-center shadow" id="tablaFactura">
         </table>
     </div>
 </div>
