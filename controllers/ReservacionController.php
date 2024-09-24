@@ -14,7 +14,8 @@ class ReservacionController
     // Muestra habitaciones y reservaciones en una sola vista
     public static function index(Router $router)
     {
-
+        isAuth();
+        hasPermission(['TIENDA_ADM', 'TIENDA_EMP', 'TIENDA_EMP']);
         $cliente = $_GET['id'];
 
         $habitaciones = Habitacion::all();

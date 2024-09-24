@@ -454,6 +454,13 @@
         <img src="images/portal.jpg" alt="portal">
     </div>
 </section>
+<?php
+echo "<pre>";
+var_dump($_SESSION);
+var_dump($_SESSION['user']['rol_nombre_ct']);
+echo "</pre>";
+
+?>
 
 <section class="contact-section rounded">
     <div class="contact-container justify-content-center row">
@@ -507,7 +514,3 @@
 </section>
 
 <script src="<?= asset('./build/js/inicio/index.js') ?>"></script>
-<?php
-var_dump($_SESSION)
-
-?>

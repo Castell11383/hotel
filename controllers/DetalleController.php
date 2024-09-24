@@ -11,6 +11,8 @@ class DetalleController
 {
     public static function index(Router $router)
     {
+        isAuth();
+        hasPermission(['TIENDA_ADM', 'TIENDA_EMP']);
         $detalles = Reservacion::mostrarDetallesReservacion();
         $router->render('detalle/index', [
             'reservaciones' => $detalles

@@ -6,9 +6,10 @@ use MVC\Router;
 
 class InicioController {
     public static function index(Router $router){
-         $router->render('inicio/index',[],'layouts/menu');
-         isAuth();
-          hasPermission(['TIENDA_ADMIN', 'TIENDA_USER']);
+        isAuth();
+        hasPermission(['TIENDA_ADM', 'TIENDA_EMP', 'TIENDA_USER']);
+        
+        $router->render('inicio/index',[],'layouts/menu');
     }
 
 }

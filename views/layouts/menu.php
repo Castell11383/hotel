@@ -72,7 +72,10 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/hotel/"><i class="bi bi-house-fill me-2"></i>Inicio</a>
                     </li>
+                             
+                    
 
+                    <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM'])): ?>
                     <div class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-people-fill"></i> Empleados
@@ -84,7 +87,14 @@
 
                         </ul>
                     </div>
+                     <?php endif ?>;
+             
+                 
 
+                  
+
+
+                     <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP', 'TIENDA_USE'])): ?>
                     <div class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-house-add-fill"></i> Reservaciones
@@ -93,15 +103,24 @@
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/hotel/reservaciones/detalle"><i class="bi bi-house-lock-fill"></i> Reservacion</a>
                             </li>
+                            <?php endif ?>
+                            <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP'])): ?>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/hotel/detalle"><i class="bi bi-clock-history"></i> Historial</a>
                             </li>
+                           
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/hotel/factura"><i class="bi bi-file-earmark-text-fill"></i> Factura</a>
                             </li>
+                            <?php endif ?>
+             
                         </ul>
                     </div>
+                   
 
+                 
+
+                    <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP'])): ?>             
                     <div class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-person-lines-fill"></i> Clientes
@@ -112,7 +131,9 @@
                             </li>
                         </ul>
                     </div>
-
+                    <?php endif ?>
+                     
+                    <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP', 'TIENDA_USE'])): ?>
                     <div class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-houses-fill"></i> Habitaciones
@@ -123,6 +144,7 @@
                             </li>
                         </ul>
                     </div>
+                    <?php endif ?>
                 </ul>
                 <div class="col-lg-1 d-grid mb-lg-0 mb-2">
 
@@ -152,3 +174,5 @@
 </body>
 
 </html>
+
+

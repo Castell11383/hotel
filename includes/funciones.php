@@ -20,6 +20,7 @@ function isAuth() {
         header('Location: /hotel/inicio');
     }
 }
+
 function isAuthApi() {
     getHeadersApi();
     session_start();
@@ -51,7 +52,7 @@ function hasPermission(array $permisos){
     }
 
     if(array_search(true, $comprobaciones) !== false){}else{
-        header('Location: /');
+        header('Location: hotel/inicio');
     }
 }
 

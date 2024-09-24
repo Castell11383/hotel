@@ -11,6 +11,8 @@ class EmpleadoController
 {
     public static function index(Router $router)
     {
+        isAuth();
+        hasPermission(['TIENDA_ADM',]);
         $router->render('empleados/index', []);
     }
 
