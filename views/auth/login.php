@@ -4,7 +4,7 @@
         text-align: center;
         color: black;
         font-size: 5rem;
-        margin-bottom: 20px; /* Reducir margen inferior del título */
+        margin-bottom: 20px;
     }
 
     .content {

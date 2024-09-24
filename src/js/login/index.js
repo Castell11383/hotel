@@ -5,7 +5,7 @@ const formulario = document.querySelector('form')
 
 const IniciarSesion = async (e) => {
     e.preventDefault();
-
+    
     if (!validarFormulario(formulario)) {
         Swal.fire({
             title: "Campos vacios",
@@ -14,22 +14,21 @@ const IniciarSesion = async (e) => {
         })
         return
     }
-
+    
     try {
         const body = new FormData(formulario)
         const url = '/hotel/API/login';
-
+        
         const config = {
             method: 'POST',
             body
-        }
+        }    
 
         const respuesta = await fetch(url, config);
         const data = await respuesta.json();
         const { codigo, mensaje, detalle } = data
 
-        //console.log(data)
-    
+     
 
         if (codigo == 1) {
 
@@ -48,7 +47,7 @@ const IniciarSesion = async (e) => {
 
             // });  
             formulario.reset();
-           location.href = '/hotel/inicio'
+             location.href = '/hotel/inicio'
         } else {
             Swal.fire({
                 title: '¡Error!',
