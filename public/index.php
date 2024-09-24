@@ -71,14 +71,16 @@ $router->get('/inicio', [MapaController::class, 'index']);
 $router->get('/detalle', [DetalleController::class, 'index']);
 $router->get('/API/detalle/index', [DetalleController::class, 'detalleReservacionAPI']);
 
-//registro clientes
+//REGISTRO CLIENTES
 $router->get('/registro', [RegistroController::class,'index']);
 $router->post('/API/registro/guardar', [RegistroController::class,'guardarAPI']);
 
 
-//login
+//IMPRIMIR PDF HISTORIAL
+$router->get('/reservaciones/imprimir-pdf', [ReservacionController::class, 'imprimirPdf']);
 
 
+//LOGIN
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

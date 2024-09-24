@@ -31,6 +31,7 @@
     "bootstrap-icons": "^1.9.1",
     "chart.js": "^4.4.4",
     "datatables.net-bs5": "^1.12.1",
+    "flatpickr": "^4.6.13",
     "fullcalendar": "^5.11.3",
     "jquery": "^3.6.1",
     "leaflet": "^1.9.4",

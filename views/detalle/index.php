@@ -31,7 +31,7 @@
                                 <td><?= htmlspecialchars($opciones['entrada']) ?></td>
                                 <td><?= htmlspecialchars($opciones['salida']) ?></td>
                                 <td><?= htmlspecialchars($opciones['detalles_habitacion']) ?></td>
-                                <td>$<?= htmlspecialchars($opciones['total']) ?></td>
+                                <td>Q.<?= htmlspecialchars($opciones['total']) ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php } else { ?>
@@ -41,13 +41,19 @@
                     <?php } ?>
                 </tbody>
             </table>
+
+            <div class="text-center mt-3 mb-5">
+                    <button id="btnImprimirPDF" class="btn btn-primary btn-lg" onclick="window.location.href='/hotel/reservaciones/imprimir-pdf'"><i class="bi bi-file-earmark-pdf-fill" style="font-size: 3rem"></i></button>
+            </div>
+
         </div>
     </div>
 </div>
 
-<div class="row justify-content-center text-center mt-4">
-    <h3 class="class text-center mb-4" style=" color: blue; font-family:Playwrite DE Grund;"><b>Gráfica habitaciones reservadas</b></h3>
-    <div class="col-lg-5 border border-dark bg-white rounded shadow">
+<div class="row justify-content-center text-center">
+    <h3 class="class text-center" style=" color: blue; font-family:fantasy;">Gráfica habitaciones reservadas</h3>
+    <div class="col-lg-5 border border-dark rounded shadow">
+
         <div class="row justify-content-center text-center">
             <div class="col">
                 <canvas id="chartVentas" width="100%"></canvas>
@@ -56,7 +62,7 @@
 
         <div class="row justify-content-center">
             <div class="col-lg-6 mb-3 mt-3">
-                <button type="button" id="actualizar" class="btn btn-primary w-20 btn-lg"><i class="bi bi-arrow-clockwise"></i></button>
+                <button type="button" id="actualizar" class="btn btn-primary w-20 btn-lg rounded-circle" style="font-size: 2rem"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
         </div>
     </div>

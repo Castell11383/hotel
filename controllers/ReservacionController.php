@@ -6,6 +6,7 @@ use Exception;
 use Model\Reservacion;
 use Model\Cliente;
 use Model\Habitacion;
+use Mpdf\Mpdf;
 use MVC\Router;
 
 class ReservacionController
@@ -105,13 +106,13 @@ class ReservacionController
     {
         // Sanitizar y validar las entradas
         $_POST['clie_id'] = filter_var($_POST['clie_id'], FILTER_SANITIZE_NUMBER_INT); // Usar clie_id en lugar de clie_nombres y clie_apellidos
-        $_POST['habi_tipo'] = htmlspecialchars($_POST['habi_tipo']);
+        $_POST['habi_id'] = htmlspecialchars($_POST['habi_id'], FILTER_SANITIZE_NUMBER_INT);
         $_POST['reser_fecha_entrada'] = date('Y-m-d H:i', strtotime($_POST['reser_fecha_entrada']));
         $_POST['reser_fecha_salida'] = date('Y-m-d H:i', strtotime($_POST['reser_fecha_salida']));
         $id = filter_var($_POST['reser_id'], FILTER_SANITIZE_NUMBER_INT);
     
         // Validación simple para asegurarse de que no hay campos vacíos
-        if (empty($id) || empty($_POST['clie_id']) || empty($_POST['habi_tipo']) || empty($_POST['reser_fecha_entrada']) || empty($_POST['reser_fecha_salida'])) {
+        if (empty($id) || empty($_POST['clie_id']) || empty($_POST['habi_id']) || empty($_POST['reser_fecha_entrada']) || empty($_POST['reser_fecha_salida'])) {
             http_response_code(400);
             echo json_encode([
                 'codigo' => 0,
@@ -185,5 +186,31 @@ class ReservacionController
         }
     }
 
+
+    //imprimir historial pdf
+    public static function imprimirPdf() {
+        // Obtener los datos necesarios, como las reservaciones y habitaciones
+        $reservaciones = Reservacion::mostrarDetallesReservacion();
+        $habitaciones = Habitacion::all();
+        
+
+        // Cargar el contenido HTML que deseas convertir a PDF
+        ob_start();
+        include_once __DIR__ . '/../views/reservaciones/pdf.php'; // Tu archivo de vista
+        $html = ob_get_clean();
+
+        // Crear una instancia de mPDF
+        $mpdf = new \Mpdf\Mpdf([
+            'orientation' => 'L' // 'L' es para landscape (horizontal)
+        ]);
+
+        // Escribir el contenido HTML en el PDF
+        $mpdf->WriteHTML($html);
+
+        // Generar y descargar el PDF
+        $mpdf->Output('reservaciones.pdf', 'I');  // 'D' es para descargar. Puedes cambiar a 'I' para visualizarlo en el navegador.
+    }
 }
+
+
 

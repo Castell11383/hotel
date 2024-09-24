@@ -39,16 +39,19 @@ const datatable = new DataTable('#tabla-reservaciones', {
             }
         },
         {
-            title: 'HABITACION',
-            data: 'habi_tipo',  // Mostrar el tipo de habitación
+            title: 'DETALLES_HABITACION',
+            data: null,  // Usamos `null` para poder personalizar los datos
+            render: (data, type, row, meta) => {
+                return `Habitacion: ${row.habi_id} - Tipo: ${row.habi_tipo}`;  // Concatenar ID y tipo
+            }
 
         },
         {
-            title: 'Entrada',
+            title: 'ENTRADA',
             data: 'reser_fecha_entrada'
         },
         {
-            title: 'Salida',
+            title: 'SALIDA',
             data: 'reser_fecha_salida'
         },
         
@@ -59,7 +62,7 @@ const datatable = new DataTable('#tabla-reservaciones', {
             orderable: false,
             render: (data, type, row, meta) => {
                 let html = `
-              <button class='btn btn-warning modificar' data-reser_id="${data}" data-reser_cliente="${row.clie_nombres} ${row.clie_apellidos}" data-reser_habitacion="${row.habi_tipo}" data-reser_fecha_entrada="${row.reser_fecha_entrada}" data-reser_fecha_salida="${row.reser_fecha_salida}"><i class='bi bi-pencil-square'></i></button>
+              <button class='btn btn-warning modificar' data-reser_id="${data}" data-clie_id="${row.clie_nombres} ${row.clie_apellidos}" data-habi_id="${row.habi_tipo}" data-reser_fecha_entrada="${row.reser_fecha_entrada}" data-reser_fecha_salida="${row.reser_fecha_salida}"><i class='bi bi-pencil-square'></i></button>
                 <button class='btn btn-danger eliminar' data-reser_id="${data}"><i class="bi bi-trash-fill"></i></button>
                 `
                 return html;
@@ -142,6 +145,9 @@ const guardar = async (evento) => {
             icon,
             text: mensaje
         });
+        formulario.reset();
+        cancelar(); // Resetea los botones y el formulario
+        buscar(); 
     } catch (error) {
         console.log(error);
     }
@@ -162,8 +168,8 @@ const traerDatos = (e) => {
     if (inputId && selectCliente && inputHabitacion && inputEntrada && inputSalida) {
         // Asignar valores
         inputId.value = elemento.reser_id;
-        selectCliente.value = elemento.reser_cliente_id; // Asignar el clie_id al select
-        inputHabitacion.value = elemento.reser_habitacion_id; // Asignar el habi_id
+        selectCliente.value = elemento.clie_id; // Asignar el clie_id al select
+        inputHabitacion.value = elemento.habi_id; // Asignar el habi_id
         inputEntrada.value = elemento.reser_fecha_entrada;
         inputSalida.value = elemento.reser_fecha_salida;
     } else {
@@ -207,7 +213,7 @@ const modificar = async (e) => {
 
     try {
         const body = new FormData(formulario);  // Recoge los datos del formulario
-        const url = "/hotel/API/reservaciones/modificar";  // Asegúrate de que esta URL sea correcta
+        const url = `/hotel/API/reservaciones/modificar`;  // Asegúrate de que esta URL sea correcta
         const config = {
             method: 'POST',
             body
@@ -246,6 +252,7 @@ const modificar = async (e) => {
         });
     }
 };
+
 const eliminar = async (reservacion) => {
     const id = reservacion.currentTarget.dataset.reser_id;
 
@@ -346,6 +353,9 @@ const eliminar = async (reservacion) => {
         });
     }
 });
+
+
+//agregamos para agregar interaccion con inputs de fecha 
 
 
 // Inicializamos la búsqueda al cargar la página
