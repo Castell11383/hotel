@@ -52,7 +52,7 @@ function hasPermission(array $permisos){
     }
 
     if(array_search(true, $comprobaciones) !== false){}else{
-        header('Location: hotel/inicio');
+        header('Location: /hotel/inicio');
     }
 }
 

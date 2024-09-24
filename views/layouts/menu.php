@@ -81,38 +81,41 @@
             }
         }
 
-        h3 {
+        .loading {
             font-family: "Chau Philomene One", sans-serif;
             text-align: center;
             color: black;
             font-size: 5rem;
         }
 
-        p {
+        .banner {
+            font-family: "Chau Philomene One", sans-serif;
+            text-align: center;
+            color: black;
+            font-size: 5rem;
+        }
+
+        .pascciencia {
             font-family: "Chau Philomene One", sans-serif;
             text-align: center;
             color: black;
             font-size: 3rem;
         }
-
     </style>
 </head>
 
 <body>
-    <!-- Loader -->
     <div id="loader">
         <img src="/hotel/public/images/logohotel.webp" alt="Cargando..." class="rounded-circle" />
-        <h3>Loading...</h3>
+        <h3 class="loading">Loading...</h3>
 
-        <img src="/hotel/public/images/logohotel.webp" alt="Cargando..." />
-        <h3>Estamos buscando la mejor opción para usted</h3>
-
-        <p>Gracias por tu paciencia</p>
+        <p class="pascciencia">Gracias por tu paciencia</p>
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="/hotel/">
@@ -126,86 +129,13 @@
                         <a class="nav-link" href="/hotel/inicio"><i class="bi bi-house-fill me-2"></i>Inicio</a>
                     </li>
 
-
-
-                    <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM'])): ?>
-                        <div class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-people-fill"></i> Empleados
-                            </a>
-                            <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
-                                <li>
-                                    <a class="dropdown-item nav-link text-white " href="/hotel/empleados"><i class="bi bi-person-fill-add"></i> Registrar</a>
-                                </li>
-
-                            </ul>
-                        </div>
-                        <?php endif ?>;
-
-
-
-
-
-
-                        <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP', 'TIENDA_USE'])): ?>
-                            <div class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                    <i class="bi bi-house-add-fill"></i> Reservaciones
-                                </a>
-                                <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
-                                    <li>
-                                        <a class="dropdown-item nav-link text-white " href="/hotel/reservaciones/detalle"><i class="bi bi-house-lock-fill"></i> Reservacion</a>
-                                    </li>
-                                <?php endif ?>
-                                <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP'])): ?>
-                                    <li>
-                                        <a class="dropdown-item nav-link text-white " href="/hotel/detalle"><i class="bi bi-clock-history"></i> Historial</a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item nav-link text-white " href="/hotel/factura"><i class="bi bi-file-earmark-text-fill"></i> Factura</a>
-                                    </li>
-                                <?php endif ?>
-
-                                </ul>
-                            </div>
-
-
-
-
-                            <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP'])): ?>
-                                <div class="nav-item dropdown ">
-                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                        <i class="bi bi-person-lines-fill"></i> Clientes
-                                    </a>
-                                    <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
-                                        <li>
-                                            <a class="dropdown-item nav-link text-white " href="/hotel/cliente"><i class="bi bi-person-plus-fill"></i> Registrar</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            <?php endif ?>
-
-                            <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP', 'TIENDA_USE'])): ?>
-                                <div class="nav-item dropdown ">
-                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                        <i class="bi bi-houses-fill"></i> Habitaciones
-                                    </a>
-                                    <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
-                                        <li>
-                                            <a class="dropdown-item nav-link text-white " href="/hotel/habitaciones"><i class="bi bi-house-gear-fill"></i> Tipos</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            <?php endif ?>
-
                     <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM'])): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                 <i class="bi bi-people-fill"></i> Empleados
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="/hotel/empleados"><i class="bi bi-person-fill-add"></i> Registrar</a></li>
+                                <li><a class="dropdown-item" href="/hotel/empleados"><i class="bi bi-person-fill-add"></i>Registrar</a></li>
                             </ul>
                         </li>
                     <?php endif; ?>
@@ -218,7 +148,7 @@
                             <ul class="dropdown-menu dropdown-menu-dark">
                                 <li><a class="dropdown-item" href="/hotel/reservaciones/detalle"><i class="bi bi-house-lock-fill"></i> Reservacion</a></li>
                                 <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP'])): ?>
-                                    <li><a class="dropdown-item" href="/hotel/detalle"><i class="bi bi-clock-history"></i> Historial</a></li>
+                                    <li><a class="dropdown-item" href="/hotel/detalle"><i class="bi bi-clock-history"></i>Historial</a></li>
                                     <li><a class="dropdown-item" href="/hotel/factura"><i class="bi bi-file-earmark-text-fill"></i> Factura</a></li>
                                 <?php endif; ?>
                             </ul>
@@ -231,10 +161,11 @@
                                 <i class="bi bi-person-lines-fill"></i> Clientes
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="/hotel/cliente"><i class="bi bi-person-plus-fill"></i> Registrar</a></li>
+                                <li><a class="dropdown-item" href="/hotel/cliente"><i class="bi bi-person-plus-fill"></i>Registrar</a></li>
                             </ul>
                         </li>
                     <?php endif; ?>
+
                     <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP', 'TIENDA_USE'])): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
@@ -244,11 +175,9 @@
                                 <li><a class="dropdown-item" href="/hotel/habitaciones"><i class="bi bi-house-gear-fill"></i> Tipos</a></li>
                             </ul>
                         </li>
+                    <?php endif; ?>
                 </ul>
-                
-                <?php endif; ?>
 
-                
                 <div class="col-lg-1 d-grid mb-lg-0 mb-2">
                     <a href="/hotel/logout" class="btn btn-danger"><i class="bi bi-arrow-bar-left">Salir</i></a>
                 </div>
@@ -256,7 +185,8 @@
         </div>
     </nav>
     <div class="progress fixed-bottom" style="height: 6px;">
-        <div class="progress-bar progress-bar-animated bg-danger" id="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar progress-bar-animated bg-danger" id="bar" role="progressbar" aria-valuemin="0"
+            aria-valuemax="100"></div>
     </div>
     <div class="container-fluid mb-4" style="min-height: 85vh">
 
@@ -273,7 +203,6 @@
     </div>
 
     <script>
-
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -281,7 +210,6 @@
                 });
             });
         });
-
 
         window.onload = function() {
             document.getElementById('loader').style.display = 'none';
