@@ -80,14 +80,33 @@
                 transform: rotate(360deg);
             }
         }
+
+        h3 {
+            font-family: "Chau Philomene One", sans-serif;
+            text-align: center;
+            color: black;
+            font-size: 5rem;
+        }
+
+        p {
+            font-family: "Chau Philomene One", sans-serif;
+            text-align: center;
+            color: black;
+            font-size: 3rem;
+        }
+
     </style>
 </head>
 
 <body>
     <!-- Loader -->
     <div id="loader">
+        <img src="/hotel/public/images/logohotel.webp" alt="Cargando..." class="rounded-circle" />
+        <h3>Loading...</h3>
+
         <img src="/hotel/public/images/logohotel.webp" alt="Cargando..." />
         <h3>Estamos buscando la mejor opción para usted</h3>
+
         <p>Gracias por tu paciencia</p>
     </div>
 
@@ -106,6 +125,79 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/hotel/inicio"><i class="bi bi-house-fill me-2"></i>Inicio</a>
                     </li>
+
+
+
+                    <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM'])): ?>
+                        <div class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                <i class="bi bi-people-fill"></i> Empleados
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                                <li>
+                                    <a class="dropdown-item nav-link text-white " href="/hotel/empleados"><i class="bi bi-person-fill-add"></i> Registrar</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <?php endif ?>;
+
+
+
+
+
+
+                        <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP', 'TIENDA_USE'])): ?>
+                            <div class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                    <i class="bi bi-house-add-fill"></i> Reservaciones
+                                </a>
+                                <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                                    <li>
+                                        <a class="dropdown-item nav-link text-white " href="/hotel/reservaciones/detalle"><i class="bi bi-house-lock-fill"></i> Reservacion</a>
+                                    </li>
+                                <?php endif ?>
+                                <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP'])): ?>
+                                    <li>
+                                        <a class="dropdown-item nav-link text-white " href="/hotel/detalle"><i class="bi bi-clock-history"></i> Historial</a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item nav-link text-white " href="/hotel/factura"><i class="bi bi-file-earmark-text-fill"></i> Factura</a>
+                                    </li>
+                                <?php endif ?>
+
+                                </ul>
+                            </div>
+
+
+
+
+                            <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP'])): ?>
+                                <div class="nav-item dropdown ">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                        <i class="bi bi-person-lines-fill"></i> Clientes
+                                    </a>
+                                    <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                                        <li>
+                                            <a class="dropdown-item nav-link text-white " href="/hotel/cliente"><i class="bi bi-person-plus-fill"></i> Registrar</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            <?php endif ?>
+
+                            <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM', 'TIENDA_EMP', 'TIENDA_USE'])): ?>
+                                <div class="nav-item dropdown ">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                        <i class="bi bi-houses-fill"></i> Habitaciones
+                                    </a>
+                                    <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                                        <li>
+                                            <a class="dropdown-item nav-link text-white " href="/hotel/habitaciones"><i class="bi bi-house-gear-fill"></i> Tipos</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            <?php endif ?>
 
                     <?php if (in_array($_SESSION['user']['rol_nombre_ct'], ['TIENDA_ADM'])): ?>
                         <li class="nav-item dropdown">
@@ -181,7 +273,7 @@
     </div>
 
     <script>
-        // Mostrar el loader al hacer clic en un enlace
+
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -190,7 +282,7 @@
             });
         });
 
-        // Ocultar el loader cuando la página termine de cargar
+
         window.onload = function() {
             document.getElementById('loader').style.display = 'none';
         };
