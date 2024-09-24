@@ -44,7 +44,7 @@
             </div>
     
             <div class="row justify-content-center mb-3">
-                <div class="col-lg-5">
+                <div class="col-lg-8">
                     <button type="submit" class="btn btn-primary w-100 btn-lg">
                         Iniciar sesión
                     </button>

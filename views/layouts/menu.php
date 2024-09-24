@@ -70,7 +70,7 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin: 0;">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/hotel/"><i class="bi bi-house-fill me-2"></i>Inicio</a>
+                        <a class="nav-link" aria-current="page" href="/hotel/inicio"><i class="bi bi-house-fill me-2"></i>Inicio</a>
                     </li>
 
                     <div class="nav-item dropdown ">
