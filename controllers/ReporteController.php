@@ -11,6 +11,8 @@ class ReporteController
 {
     public static function pdf(Router $router)
     {
+        isAuth();
+        hasPermission(['TIENDA_ADM', 'TIENDA_EMP']);
         $id = $_POST['deta_id'];
     
         error_reporting(E_ALL);
