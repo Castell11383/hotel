@@ -55,3 +55,70 @@ CREATE TABLE DETALLE_FACTURA(
     FOREIGN KEY (DETA_EMPLEADO) REFERENCES EMPLEADO (EMP_ID),
     FOREIGN KEY (DETA_RESERVACION) REFERENCES RESERVACION (RESER_ID)
 );
+
+--  CREACION DE TABLAS PARA CREACION DE LOGIN Y INSERTS PARA CREACION DE TRES USUARIOS CON DIFERENTES PERMISOS
+
+
+CREATE TABLE APLICACION (
+    APP_ID SERIAL,
+    APP_NOMBRE VARCHAR(50),
+    APP_SITUACION SMALLINT DEFAULT 1,
+    PRIMARY KEY (APP_ID)
+);
+
+
+CREATE TABLE ROL (
+    ROL_ID SERIAL,
+    ROL_NOMBRE VARCHAR(50),
+    ROL_NOMBRE_CT VARCHAR(10),
+    ROL_APP INTEGER,
+    ROL_SITUACION SMALLINT DEFAULT 1,
+    PRIMARY KEY (ROL_ID),
+    FOREIGN KEY (ROL_APP) REFERENCES APLICACION (APP_ID)
+);
+
+CREATE TABLE USUARIO (
+    USU_ID SERIAL,
+    USU_NOMBRE VARCHAR(50),
+    USU_NIT INTEGER,
+    USU_PASSWORD VARCHAR(250),
+    USU_SITUACION SMALLINT DEFAULT 1,
+    PRIMARY KEY (USU_ID)
+);
+
+CREATE TABLE PERMISO (
+    PERMISO_ID SERIAL,
+    PERMISO_USUARIO INTEGER,
+    PERMISO_ROL INTEGER,
+    PERMISO_SITUACION SMALLINT DEFAULT 1,
+    PRIMARY KEY (PERMISO_ID),
+    FOREIGN KEY (PERMISO_ROL) REFERENCES ROL (ROL_ID),
+    FOREIGN KEY (PERMISO_USUARIO) REFERENCES USUARIO (USU_ID)
+);
+
+-- INSERTS
+
+insert into aplicacion (app_nombre) values ('hotel');
+
+-- INSERTS DE TRES ROLES DIFERENTES CADA UNO TIENE COMO CONTRASEÑA 123456 
+
+insert into rol (rol_nombre, rol_nombre_ct, rol_app ) values ('ADMINISTRADOR DE TIENDA', 'TIENDA_ADM', 1);
+insert into rol (rol_nombre, rol_nombre_ct, rol_app ) values ('USUARIO DE TIENDA', 'TIENDA_EMP', 1);
+insert into rol (rol_nombre, rol_nombre_ct, rol_app ) values ('USUARIO DE TIENDA', 'TIENDA_USE', 1);
+
+
+-- USUARIO CON ROL DE ADMINISTRADOR
+insert into usuario (usu_nombre, usu_nit, usu_password ) values ('Nixon', 623041, '$2y$10$Nz6/ESQw7b7xW1Q2j.WEM.g5LQ/NSSmHnhZpfolFAH.ltD0GGRKGS');
+
+insert into permiso (permiso_usuario, permiso_rol) values (1, 1);
+
+
+-- USUARIO CON ROL DE EMPLEADO
+insert into usuario (usu_nombre, usu_nit, usu_password ) values ('jean', 1999, '$2y$10$Nz6/ESQw7b7xW1Q2j.WEM.g5LQ/NSSmHnhZpfolFAH.ltD0GGRKGS');
+
+insert into permiso (permiso_usuario, permiso_rol) values (2, 2);
+
+-- USUARIO CON ROL DE USUARIO
+insert into usuario (usu_nombre, usu_nit, usu_password ) values ('chocoj', 1998, '$2y$10$Nz6/ESQw7b7xW1Q2j.WEM.g5LQ/NSSmHnhZpfolFAH.ltD0GGRKGS');
+
+insert into permiso (permiso_usuario, permiso_rol) values (3, 3);
