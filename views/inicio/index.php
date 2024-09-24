@@ -15,7 +15,6 @@
 
     html,
     body {
-        height: 100%;
         margin: 0;
         overflow-x: hidden;
     }
@@ -507,7 +506,3 @@
 </section>
 
 <script src="<?= asset('./build/js/inicio/index.js') ?>"></script>
-<?php
-var_dump($_SESSION)
-
-?>
