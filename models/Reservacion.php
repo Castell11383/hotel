@@ -47,6 +47,7 @@ class Reservacion extends ActiveRecord {
         $sql = "SELECT r.reser_id, 
        c.clie_nombres, 
        c.clie_apellidos, 
+       h.habi_id,
        h.habi_tipo, 
        r.reser_fecha_entrada, 
        r.reser_fecha_salida

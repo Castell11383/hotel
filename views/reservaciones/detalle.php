@@ -12,6 +12,7 @@ $clientes = $cliente->buscar()
         <i class="bi bi-file-earmark-medical-fill" style="font-size: 5rem;"></i>
         <input type="hidden" name="reser_id" id="reser_id">
         <div class="row mb-3">
+
             <div class="col">
                 <label for="clie_id">Cliente</label>
                 <select name="clie_id" id="clie_id" class="form-control">
@@ -23,19 +24,21 @@ $clientes = $cliente->buscar()
                 </select>
             </div>
             <div class="col">
-                <label for="habi_id">Detalles</label>
+                <label for="habi_id">Detalles Habitacion</label>
                 <select name="habi_id" id="habi_id" class="form-control">
-                    <?php foreach ($habitaciones as $habitacion): ?>
+                    <?php
+                    // Recuperar los datos de la habitación de la URL si existen
+                    $selectedHabitacionId = $_GET['habi_id'] ?? null;
+                    foreach ($habitaciones as $habitacion) { ?>
                         <option
                             value="<?php echo htmlspecialchars($habitacion['habi_id']); ?>"
-                            data-ocupada="<?= in_array($habitacion['habi_id'], array_column($habitacionesOcupadas, 'reser_habitacion')) ? 'true' : 'false' ?>">
-                            <?php echo htmlspecialchars($habitacion['habi_id']); ?>
-                            <?php echo htmlspecialchars($habitacion['habi_tipo']); ?> - $<?php echo htmlspecialchars($habitacion['habi_precio']); ?>
+                            data-ocupada="<?= in_array($habitacion['habi_id'], array_column($habitacionesOcupadas, 'reser_habitacion')) ? 'true' : 'false'; ?>"
+                            <?php echo ($selectedHabitacionId == $habitacion['habi_id']) ? 'selected' : ''; ?>>
+                          Habitacion: <?php echo htmlspecialchars($habitacion['habi_id']); ?> - <?php echo htmlspecialchars($habitacion['habi_tipo']); ?> - Q. <?php echo htmlspecialchars($habitacion['habi_precio']); ?>
                         </option>
-                    <?php endforeach; ?>
+                    <?php } ?>
                 </select>
             </div>
-        </div>
 
         <div class="row mb-3">
             <div class="col">

@@ -71,6 +71,7 @@ $router->get('/API/detalle/index', [DetalleController::class, 'detalleReservacio
 $router->get('/registro', [RegistroController::class,'index']);
 $router->post('/API/registro/guardar', [RegistroController::class,'guardarAPI']);
 
-
+//imprimir historial en pdf
+$router->get('/reservaciones/imprimir-pdf', [ReservacionController::class, 'imprimirPdf']);
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
