@@ -51,10 +51,46 @@
             animation: cambioFondo 10s infinite;
             /* Cambia cada 10 segundos */
         }
+
+        #loader {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
+            text-align: center;
+            padding-top: 20%;
+        }
+
+        #loader img {
+            width: 80px;
+            height: 80px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
     </style>
 </head>
 
 <body>
+<!-- Loader -->
+<div id="loader">
+        <img src="/hotel/public/images/logohotel.webp" alt="Cargando..." />
+        <h3>Estamos buscando la mejor opción para usted</h3>
+        <p>Gracias por tu paciencia</p>
+    </div>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
         <div class="container-fluid">
@@ -149,6 +185,23 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Mostrar el loader al hacer clic en un enlace
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    document.getElementById('loader').style.display = 'block';
+                });
+            });
+        });
+
+        // Ocultar el loader cuando la página termine de cargar
+        window.onload = function () {
+            document.getElementById('loader').style.display = 'none';
+        };
+    </script>
+
 </body>
 
 </html>
