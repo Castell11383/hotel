@@ -62,7 +62,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="/hotel/">
+            <a class="navbar-brand" href="/hotel/inicio">
                 <img src="<?= asset('./images/cit.png') ?>" width="35px'" class="rounded-circle">
                 Aplicaciones
             </a>
