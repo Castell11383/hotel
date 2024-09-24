@@ -10,6 +10,7 @@ use Controllers\DetalleController;
 use Controllers\HabitacionController;
 use Controllers\InicioController;
 use Controllers\FacturaController;
+use Controllers\LoginController;
 use Controllers\ReporteController;
 use Controllers\MapaController;
 use Controllers\RegistroController;
@@ -18,7 +19,10 @@ $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
 
 //INICIO
-$router->get('/', [InicioController::class,'index']);
+$router->get('/inicio', [InicioController::class,'index']);
+$router->get('/', [LoginController::class,'login']);
+$router->post('/API/login', [LoginController::class,'loginAPI']);
+$router->get('/logout', [LoginController::class,'logout']);
 
 //EMPLEADOS
 $router->get('/empleados', [EmpleadoController::class, 'index']);
@@ -67,11 +71,16 @@ $router->get('/inicio', [MapaController::class, 'index']);
 $router->get('/detalle', [DetalleController::class, 'index']);
 $router->get('/API/detalle/index', [DetalleController::class, 'detalleReservacionAPI']);
 
-//registro clientes
+//REGISTRO CLIENTES
 $router->get('/registro', [RegistroController::class,'index']);
 $router->post('/API/registro/guardar', [RegistroController::class,'guardarAPI']);
 
-//imprimir historial en pdf
+
+//IMPRIMIR PDF HISTORIAL
 $router->get('/reservaciones/imprimir-pdf', [ReservacionController::class, 'imprimirPdf']);
+
+
+//LOGIN
+
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

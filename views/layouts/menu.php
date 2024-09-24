@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="build/js/app.js"></script>
+    <title>Hotel Portal del Lago</title>
     <link rel="shortcut icon" href="<?= asset('images/cit.png') ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?= asset('build/styles.css') ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,11 +17,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
-    <title>Hotel Portal del Lago</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&family=Sofadi+One&display=swap" rel="stylesheet">
+    <style>
+        @keyframes cambioFondo {
+            0% {
+                background-color: #D0E9F4;
+            }
+
+            25% {
+                background-color: #E1F5A2;
+            }
+
+            50% {
+                background-color: #A2DFF7;
+            }
+
+            75% {
+                background-color: #F4E1A2;
+            }
+
+            100% {
+                background-color: #F4C3C3;
+            }
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            /* Para mantener el navbar y el contenido en columna */
+            animation: cambioFondo 10s infinite;
+            /* Cambia cada 10 segundos */
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
         <div class="container-fluid">
 
@@ -88,12 +123,10 @@
                             </li>
                         </ul>
                     </div>
-
-
                 </ul>
                 <div class="col-lg-1 d-grid mb-lg-0 mb-2">
 
-                    <a href="/hotel/" class="btn btn-danger"><i class="bi bi-arrow-bar-left"></i></a>
+                    <a href="/hotel/logout" class="btn btn-danger"><i class="bi bi-arrow-bar-left">salir</i></a>
                 </div>
 
             </div>
@@ -107,7 +140,7 @@
 
         <?php echo $contenido; ?>
     </div>
-    <div class="container-fluid ">
+    <div class="container-fluid bg-dark bg-gradient text-white">
         <div class="row justify-content-center text-center">
             <div class="col-12">
                 <p style="font-size:xx-small; font-weight: bold;">

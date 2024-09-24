@@ -17,7 +17,6 @@
     body {
         height: 100%;
         margin: 0;
-        padding: 0;
         overflow-x: hidden;
     }
 
@@ -32,7 +31,6 @@
         align-items: center;
         position: relative;
         color: #fff;
-        padding: 0;
         margin: 0;
     }
 
@@ -62,12 +60,6 @@
     .hero-text p {
         font-size: 1.5rem;
         margin: 1rem 0;
-        color: #fff;
-    }
-
-    .hero-text h1 {
-        font-size: 3rem;
-        margin: 0;
         color: #fff;
     }
 
@@ -125,8 +117,9 @@
 
     .centrar-texto {
         text-align: center;
-        font-size: 2rem;
+        font-size: 3rem;
         margin-bottom: 2rem;
+        font-family: "Sofadi One", system-ui;
     }
 
     .curso {
@@ -180,14 +173,15 @@
     }
 
     .testimonials {
-        padding: 3rem 0;
+        padding: 2rem 0;
         background-color: #f0f0f0;
         text-align: center;
     }
 
     .testimonials h2 {
-        font-size: 2rem;
+        font-size: 3rem;
         margin-bottom: 2rem;
+        font-family: "Sofadi One", system-ui;
     }
 
     .testimonial {
@@ -232,8 +226,9 @@
     }
 
     .gallery h2 {
-        font-size: 2rem;
+        font-size: 3rem;
         margin-bottom: 2rem;
+        font-family: "Sofadi One", system-ui;
     }
 
     .gallery-grid {
@@ -256,7 +251,6 @@
 
     .contact-section {
         background-color: #f8f9fa;
-        padding: 3rem 0;
         text-align: center;
     }
 
@@ -361,7 +355,7 @@
 </section>
 
 <main class="contenedor">
-    <h3 class="centrar-texto">Promociones exclusivas</h3>
+    <h3 class="centrar-texto"><b>Promociones exclusivas</b></h3>
     <div class="row">
         <div class="col">
             <div class="curso">
@@ -426,8 +420,8 @@
 </main>
 </section>
 
-<section class="testimonials">
-    <h2>Lo que dicen nuestros clientes</h2>
+<section class="testimonials rounded">
+    <h2><b>Lo que dicen nuestros clientes</b></h2>
     <div class="testimonial">
         <p>"La mejor experiencia de mi vida. ¡Vistas impresionantes y un servicio inmejorable!"</p>
         <img src="images/jean.jpg" alt="Cliente feliz">
@@ -451,7 +445,7 @@
 </section>
 
 <section class="gallery">
-    <h2>Nuestras Instalaciones</h2>
+    <h2><b>Nuestras Instalaciones</b></h2>
     <div class="gallery-grid">
         <img src="images/nosotros.jpg" alt="Imagen del hotel">
         <img src="images/piscina.jpg" alt="Piscina">
@@ -461,52 +455,59 @@
     </div>
 </section>
 
-<section class="contact-section">
-    <div class="contact-container row">
+<section class="contact-section rounded">
+    <div class="contact-container justify-content-center row">
         <div class="contact-info col-lg-2">
-            <h2>Contáctanos</h2>
-            <h4>Nuestra Ubicación</h4>
+            <h2><b>Contáctanos</b></h2>
+            <h4><b>Nuestra Ubicación</b></h4>
             <p>
                 Lago de Atitlán, Sololá, Guatemala<br>
                 Tel: +502 1234 5678<br>
                 Correo: hotelportaldellago@gmail.com
             </p>
-            <div class="row">
-                <div class="col">
-                    <a href="https://www.facebook.com" target="_blank">
-                        <i class="bi bi-facebook bg-primary bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="https://wa.me/1234567890" target="_blank">
-                        <i class="bi bi-whatsapp bg-success bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="https://www.instagram.com" target="_blank">
-                        <i class="bi bi-instagram text-white p-2 rounded-circle" style="background-color: fuchsia; font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="https://twitter.com" target="_blank">
-                        <i class="bi bi-twitter bg-info bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="https://www.youtube.com" target="_blank">
-                        <i class="bi bi-youtube bg-danger bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
-                    </a>
+        </div>
+        <div class="row">
+            <div class="contact-form justify-content-center col-lg">
+                <div class="row justify-content-center">
+                    <div class="col-lg-15 border border-dark rounded shadow" id="map" style="height: 60vh; width: 250vh; min-height: auto;">
+    
+                    </div>
                 </div>
             </div>
         </div>
-        <div class=" contact-form col-lg">
-            <div class="row justify-content-center">
-                <div class="col-lg-15 border border-dark rounded shadow" id="map" style="height: 35vh; width: 250vh; min-height: auto;">
-
-                </div>
+        <div class="row mt-5 mb-5">
+            <div class="col">
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="bi bi-facebook bg-primary bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                </a>
+            </div>
+            <div class="col">
+                <a href="https://wa.me/1234567890" target="_blank">
+                    <i class="bi bi-whatsapp bg-success bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                </a>
+            </div>
+            <div class="col">
+                <a href="https://www.instagram.com" target="_blank">
+                    <i class="bi bi-instagram text-white p-2 rounded-circle" style="background-color: fuchsia; font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                </a>
+            </div>
+            <div class="col">
+                <a href="https://twitter.com" target="_blank">
+                    <i class="bi bi-twitter bg-info bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                </a>
+            </div>
+            <div class="col">
+                <a href="https://www.youtube.com" target="_blank">
+                    <i class="bi bi-youtube bg-danger bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                </a>
             </div>
         </div>
+    </div>
     </div>
 </section>
 
 <script src="<?= asset('./build/js/inicio/index.js') ?>"></script>
+<?php
+var_dump($_SESSION)
+
+?>

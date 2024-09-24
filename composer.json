@@ -1,6 +1,6 @@
 {
-    "name": "mindef/demo",
-    "description": "Proyecto MVC demo",
+    "name": "app/hotel",
+    "description": "Proyecto portal hotel",
     "type": "project",
     "config": {
         "platform-check": true,

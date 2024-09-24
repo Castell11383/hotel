@@ -1,4 +1,4 @@
-<div class="row justify-content-center text-center">
+<div class="row justify-content-center text-center mt-5">
     <form id="formRegistro" class="border bg-light shadow rounded p-4 col-lg-6">
         <h1 class="text-center">Registro de Clientes</h1>
         <i class="bi bi-person-vcard-fill" style="font-size: 5rem;"></i>

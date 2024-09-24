@@ -1,1 +1,1 @@
-<p>RESERVADO {PAGENO} de {nbpg} </p>
+<h3>RESERVADO</h3> {PAGENO} de {nbpg} 
