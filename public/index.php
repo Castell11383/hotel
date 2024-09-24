@@ -80,7 +80,6 @@ $router->post('/API/registro/guardar', [RegistroController::class,'guardarAPI'])
 $router->get('/reservaciones/imprimir-pdf', [ReservacionController::class, 'imprimirPdf']);
 
 
-//LOGIN
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

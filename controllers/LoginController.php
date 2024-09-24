@@ -12,7 +12,7 @@ class LoginController
 {
     public static function login(Router $router)
     {
-       // isNotAuth();
+       //isNotAuth();
         $router->render('/auth/login', [], 'layouts/layout');
     }
 
@@ -34,8 +34,6 @@ class LoginController
             
             if ($usuario->validarUsuarioExistente()) {
                 $usuarioBD = $usuario->usuarioExistente();
-                // echo json_encode($usuarioBD);
-                // return;
                 //VALIDA QUE LA CONTRASEÑA ESTE CORRECTA
                 if (password_verify($_POST['usu_password'], $usuarioBD['usu_password'])) {
                     session_start();
@@ -44,7 +42,6 @@ class LoginController
                     $permisos = Permiso::fetchArray("SELECT * FROM permiso inner join rol on permiso_rol = rol_id where rol_situacion = 1 AND permiso_usuario = " . $usuarioBD['usu_id']);
                     foreach ($permisos as $permiso) {
                         $_SESSION[$permiso['rol_nombre_ct']] = 1;
-                        
                         
                     }
                     
@@ -91,7 +88,7 @@ class LoginController
     public static function menu(Router $router)
     {
         isAuth();
-         hasPermission(['TIENDA_ADMIN', 'TIENDA_USER']);
+         hasPermission(['TIENDA_ADM', 'TIENDA_EMP', 'TIENDA_USE']);
         $router->render('pages/menu', [], 'layouts/menu');
     }
 }

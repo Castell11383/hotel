@@ -17,7 +17,7 @@ function s($html) {
 function isAuth() {
     session_start();
     if(!isset($_SESSION['user'])) {
-        header('Location: /hotel/inicio');
+        header('Location: /hotel/');
     }
 }
 
