@@ -190,12 +190,41 @@
     </div>
     <div class="container-fluid bg-dark bg-gradient text-white">
         <div class="row justify-content-center text-center">
-            <div class="col-12">
+            <div class="col">
                 <p style="font-size:xx-small; font-weight: bold;">
                     Comando de Informática y Tecnología, <?= date('Y') ?> &copy;
                 </p>
             </div>
         </div>
+        <div class="row justify-content-center text-center mb-3">
+            <div class="col-lg-1">
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="bi bi-facebook bg-primary bg-gradient text-white p-2 rounded-circle" style="font-size:small;; width: 3rem; height: 3rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                </a>
+            </div>
+            <div class="col-lg-1">
+                <a href="https://wa.me/1234567890" target="_blank">
+                    <i class="bi bi-whatsapp bg-success bg-gradient text-white p-2 rounded-circle" style="font-size:small;; width: 3rem; height: 3rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                </a>
+            </div>
+            <div class="col-lg-1">
+                <a href="https://www.instagram.com" target="_blank">
+                    <i class="bi bi-instagram text-white p-2 rounded-circle" style="background-color: fuchsia; font-size:small;; width: 3rem; height: 3rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                </a>
+            </div>
+            <div class="col-lg-1">
+                <a href="https://twitter.com" target="_blank">
+                    <i class="bi bi-twitter bg-info bg-gradient text-white p-2 rounded-circle" style="font-size:small;; width: 3rem; height: 3rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                </a>
+            </div>
+            <div class="col-lg-1">
+                <a href="https://www.youtube.com" target="_blank">
+                    <i class="bi bi-youtube bg-danger bg-gradient text-white p-2 rounded-circle" style="font-size:small;; width: 3rem; height: 3rem; display: inline-flex; justify-content: center; align-items: center;"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
     </div>
 
     <script>

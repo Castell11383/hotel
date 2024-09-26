@@ -459,35 +459,6 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-5 mb-5">
-            <div class="col">
-                <a href="https://www.facebook.com" target="_blank">
-                    <i class="bi bi-facebook bg-primary bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
-                </a>
-            </div>
-            <div class="col">
-                <a href="https://wa.me/1234567890" target="_blank">
-                    <i class="bi bi-whatsapp bg-success bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
-                </a>
-            </div>
-            <div class="col">
-                <a href="https://www.instagram.com" target="_blank">
-                    <i class="bi bi-instagram text-white p-2 rounded-circle" style="background-color: fuchsia; font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
-                </a>
-            </div>
-            <div class="col">
-                <a href="https://twitter.com" target="_blank">
-                    <i class="bi bi-twitter bg-info bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
-                </a>
-            </div>
-            <div class="col">
-                <a href="https://www.youtube.com" target="_blank">
-                    <i class="bi bi-youtube bg-danger bg-gradient text-white p-2 rounded-circle" style="font-size: 3rem; width: 5rem; height: 5rem; display: inline-flex; justify-content: center; align-items: center;"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    </div>
 </section>
 
 <script src="<?= asset('./build/js/inicio/index.js') ?>"></script>
