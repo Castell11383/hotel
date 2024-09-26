@@ -52,7 +52,7 @@
 
 <div class="row justify-content-center text-center">
     <h3 class="class text-center" style=" color: blue; font-family:fantasy;">Gráfica habitaciones reservadas</h3>
-    <div class="col-lg-5 border border-dark rounded shadow">
+    <div class="col-lg-5 border border-dark rounded shadow bg-white">
 
         <div class="row justify-content-center text-center">
             <div class="col">

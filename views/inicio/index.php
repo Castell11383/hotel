@@ -1,18 +1,4 @@
 <style>
-    body {
-        font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        overflow-x: hidden;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
     html,
     body {
         margin: 0;
@@ -24,13 +10,13 @@
         background-size: cover;
         background-position: center;
         height: 100vh;
-        width: 100vw;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: relative;
         color: #fff;
-        margin: 0;
+        border-radius: 15px;
+        position: relative;
+        margin-top: 1%;
     }
 
     .overlay {
@@ -54,6 +40,7 @@
         margin: 0;
         color: #fff;
         font-family: "Chau Philomene One", sans-serif;
+        margin-top: 15%;
     }
 
     .hero-text p {
@@ -78,14 +65,11 @@
     .feature {
         margin-bottom: 2rem;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        /* Transiciones suaves */
     }
 
     .feature:hover {
         transform: translateY(-10px);
-        /* Mueve la tarjeta hacia arriba */
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        /* Añade sombra al pasar el mouse */
     }
 
     .feature img {
@@ -325,11 +309,12 @@
     }
 </style>
 <section class="hero">
-    <div class="overlay"></div>
-    <div class="hero-text">
-        <h1>Hotel Portal del Lago</h1>
-        <img src="<?= asset('./images/logohotel.webp') ?>" width="200px'" class="rounded-circle">
-        <p>El paraíso frente al lago en Guatemala</p>
+    <div class="overlay">
+        <div class="hero-text">
+            <h1>Hotel Portal del Lago</h1>
+            <img src="<?= asset('./images/logohotel.webp') ?>" width="200px'" class="rounded-circle">
+            <p>El paraíso frente al lago en Guatemala</p>
+        </div>
     </div>
 </section>
 
@@ -469,7 +454,7 @@
             <div class="contact-form justify-content-center col-lg">
                 <div class="row justify-content-center">
                     <div class="col-lg-15 border border-dark rounded shadow" id="map" style="height: 60vh; width: 250vh; min-height: auto;">
-    
+
                     </div>
                 </div>
             </div>

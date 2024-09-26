@@ -24,15 +24,15 @@
 <div class="row content justify-content-center">
     <h1 class="portal text-center">Bienvenido a Portal del Lago</h1>
     <div class="row justify-content-center">
-        <form class="col-lg-3 border border-secondary rounded shadow p-4 bg-secondary bg-gradient text-white">
+        <form class="col-lg-3 border border-secondary rounded shadow p-4 bg-secondary bg-gradient text-white text-center">
             <div class="text-center mb-4">
                 <img src="<?= asset('./images/fondohotel.webp') ?>" alt="Logo" class="img-fluid rounded-circle shadow" width="120">
             </div>
     
             <div class="row mb-3">
                 <div class="col">
-                    <label for="usu_nit" class="form-label">NIT del Usuario</label>
-                    <input type="number" name="usu_nit" id="usu_nit" class="form-control" placeholder="Ingresa tu NIT" required>
+                    <label for="usu_nit" class="form-label">Número de Usuario</label>
+                    <input type="number" name="usu_nit" id="usu_nit" class="form-control" placeholder="Usuario" required>
                 </div>
             </div>
     
